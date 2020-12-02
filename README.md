@@ -13,5 +13,5 @@ i univ. bacc. inf. Toni Starčić
 
 Link za prototip: https://xd.adobe.com/view/51cb31bb-79a0-4de9-a45f-cb186822a9b4-0498/
 
-Manuel Fabijančić zadužen za javasript
+Manuel Fabijančić zadužen za JavaSript
 
