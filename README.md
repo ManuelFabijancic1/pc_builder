@@ -26,4 +26,4 @@ Zaduženja:
 
 Manuel Fabijančić zadužen za izradu kalkulatora koji odabire komponente računala te ostatak javascript koda.
 Tom Has zadužen za bazu podataka.
-
+Mateo Brajković zadužen za HTML i CSS.
