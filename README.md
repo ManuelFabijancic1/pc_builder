@@ -1,4 +1,4 @@
-Nayiv aplikacije:
+Naziv aplikacije:
 
 Pc Builder
 
