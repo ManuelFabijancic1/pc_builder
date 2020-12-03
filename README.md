@@ -5,7 +5,7 @@ Pc Builder
 Članovi tima:
 Mateo Brajković,
 Tom Has,
-Manuel Fabijačić
+Manuel Fabijančić
 
 Fakultet informatike Pula (https://fipu.unipu.hr/)
 
