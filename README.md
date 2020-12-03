@@ -21,6 +21,9 @@ Pc Builder je aplikacija koju može svatko koristit zbog svoje jednostvanisti i 
 
 Link za prototip: https://xd.adobe.com/view/51cb31bb-79a0-4de9-a45f-cb186822a9b4-0498/
 
+
+Zaduženja:
+
 Manuel Fabijančić zadužen za izradu kalkulatora koji odabire komponente računala te ostatak javascript koda.
 Tom Has zadužen za bazu podataka.
 
