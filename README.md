@@ -1,7 +1,10 @@
+Nayiv aplikacije:
+
 Pc Builder
 
-Mateo Brajković
-Tom Has
+Članovi tima:
+Mateo Brajković,
+Tom Has,
 Manuel Fabijačić
 
 Fakultet informatike Pula (https://fipu.unipu.hr/)
