@@ -1,18 +1,47 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
-</template>
+  <div class="home" >
+    
+ <div class="row">
+ <div class="col-2"><!--useless--></div>
+ <div class="col-8">
+   <center>
+ <welcomebar />
+
+<div id="nextbutton">
+<router-link to="/computertype">Next</router-link></div>
+
+</center>
+ </div>
+ <div class="col-2">
+ <!--dont matter-->
+ </div>
+ </div>
+ </div>
+ </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import Welcomebar from '../components/welcomebar.vue'
+
 
 export default {
   name: 'Home',
   components: {
-    HelloWorld
+    Welcomebar
+   
   }
 }
-</script>
+</script >
+
+<style scoped lang="scss">
+#nextbutton {
+ background: #0978b8; 
+  text-align: center;
+  font-color: black;
+  font-weight: bold;
+  font-size: 200%;
+  text-decoration: none;
+  display: inline-block;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+  </style>
