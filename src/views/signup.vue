@@ -60,6 +60,8 @@
 </template>
 
 <script>
+import {firebase} from '@/firebase.js'
+
 export default {
     name: 'Signup',
     data() {
@@ -69,8 +71,21 @@ export default {
             password: '',
             passwordRepeat: '',
         };
-    }
-}
+    },
+        methods:{
+        signup (){
+            firebase.auth().createUserWithEmailAndPassword(this.username, this.password).then(
+                function() {
+                    console.log("Uspješna registracija");
+                }
+            ).catch(function(error) {
+                console.error("Greška", error);
+            });
+            console.log('nastavak');
+        },
+    },
+
+};
 </script>
 <style>
 
