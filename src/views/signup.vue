@@ -1,16 +1,25 @@
 <template>
-    <div class="signup">
-        <h1>signup page</h1>
+    <div id="sign" class="signup">
+        
 
         <div class="row">
-            <div class="col"></div>
+            <div class="col"> </div>
             <div class="col">
                 <form>
                     <div class="form-group">
+                          <label for="exampleInputEmail1">UserName</label>
+                        <input
+                            type="Name"
+                            v-model="username"
+                            class="form-control"
+                            id="exampleInputname1"
+                            aria-describedby="NameHelp"
+                            placeholder="Enter Username"
+                        />
                         <label for="exampleInputEmail1">Email address</label>
                         <input
                             type="email"
-                            v-model="username"
+                            v-model="email"
                             class="form-control"
                             id="exampleInputEmail1"
                             aria-describedby="emailHelp"
@@ -38,22 +47,47 @@
                         />
                     </div>
                     <button type="button" @click="signup" class="btn btn-primary">Submit</button>
+                    
                 </form>
             </div>
-            <div class="col"></div>
+            <div class="col">
+                 <div class="col"><h2 id='login1'>Already have an account ? </h2> <router-link to="/login"><button type="button" class="btn btn-dark">Login</button></router-link> </div>
+            </div>
         </div>
+     
     </div>
+
 </template>
 
 <script>
+import {firebase} from '@/firebase.js'
+
 export default {
     name: 'Signup',
     data() {
         return {
             username: '',
+            email: '',
             password: '',
             passwordRepeat: '',
         };
-    }
-}
+    },
+        methods:{
+        signup (){
+            firebase.auth().createUserWithEmailAndPassword(this.username, this.password).then(
+                function() {
+                    console.log("Uspješna registracija");
+                }
+            ).catch(function(error) {
+                console.error("Greška", error);
+            });
+            console.log('nastavak');
+        },
+    },
+
+};
 </script>
+<style>
+
+
+</style>
