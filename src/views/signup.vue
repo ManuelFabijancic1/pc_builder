@@ -65,7 +65,6 @@
 
 <script>
 import { firebase } from "@/firebase.js";
-
 export default {
   name: "Signup",
   data() {

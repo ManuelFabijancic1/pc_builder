@@ -1,21 +1,17 @@
 <template>
-  <div>
-    <!-- Image and text -->
-    <nav id="app" class="navbar">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">
-          <a class="navbar-brand" href="#">
-            <router-link to="/"
-              ><img
-                src="@/assets/logo.png"
-                height="40"
-                class="d-inline-block align-top"
-                alt=""
-                loading="lazy" /></router-link
-          ></a>
-        </a>
+  <div >
+  
 
-        <div class="nav-item">
+<!-- Image and text -->
+<nav id='app' class="navbar ">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+     <a class="navbar-brand" href="#"> <router-link to="/">
+     <img src="@/assets/logo.png" height="40" class="d-inline-block align-top" alt="" loading="lazy" /></router-link></a>
+      
+    </a>
+    
+    <div class="nav-item">
           <div v-if="!store.currentUser" class="links">
             <router-link to="/login">login</router-link>
           </div>
@@ -25,24 +21,26 @@
         </div>
       </div>
     </nav>
+<div class="razmak"></div>
+ <div class="container">
+            <router-view />
+           
+        </div>
 
-    <div class="container">
-      <router-view />
-    </div>
-
-    <!--footer-->
-    <nav id="yes" class="navbar fixed-bottom navbar-dark bg-dark">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#"></a>
-      </div>
-    </nav>
+      <!--footer-->
+        <nav id='yes' class="navbar fixed-bottom navbar-dark bg-dark">
+  <div class="container-fluid">
+    
+    <a class="navbar-brand" href="#"></a>
+ 
   </div>
+</nav>
+    </div>
 </template>
 
 <script>
 import store from "@/store";
 import { firebase } from "@/firebase";
-
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
     console.log("***", user.email);
@@ -81,14 +79,16 @@ export default {
   background-color: #353535;
   height: 70px;
 }
-
-#nav-item {
+#nav-item{
   border: 10px;
 }
-#yes {
+#yes{
   height: 40px;
 }
-#links {
-  align: right;
+#links{
+ align: right;
+}
+.razmak{
+  margin-top: 50px;
 }
 </style>

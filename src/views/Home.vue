@@ -1,40 +1,35 @@
 <template>
-  <div class="home" >
-    
- <div class="row">
- <div class="col-2"><!--useless--></div>
- <div class="col-8">
-   <center>
- <welcomebar />
+  <div class="home">
+    <div class="row">
+      <div class="col-2"><!--useless--></div>
+      <div class="col-8">
+        <center>
+          <welcomebar />
 
-<div id="nextbutton">
-<router-link to="/computertype">Next</router-link></div>
-
-</center>
- </div>
- <div class="col-2">
- <!--dont matter-->
- </div>
- </div>
- </div>
- </template>
+          <div id="nextbutton">
+            <router-link to="/budget">Next</router-link>
+          </div>
+        </center>
+      </div>
+      <div class="col-2">
+        <!--dont matter-->
+      </div>
+    </div>
+  </div>
+</template>
 
 <script>
-import Welcomebar from '../components/welcomebar.vue'
-
-
+import Welcomebar from "../components/welcomebar.vue";
 export default {
-  name: 'Home',
+  name: "Home",
   components: {
-    Welcomebar
-   
-  }
-}
+    Welcomebar,
+  },
+};
 </script >
-
 <style scoped lang="scss">
 #nextbutton {
- background: #0978b8; 
+  background: #0978b8;
   text-align: center;
   font-color: black;
   font-weight: bold;
@@ -44,5 +39,4 @@ export default {
   padding: 8px 16px;
   text-decoration: none;
 }
-  </style>
- 
+</style>

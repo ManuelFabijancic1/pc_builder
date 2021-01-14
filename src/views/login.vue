@@ -73,7 +73,6 @@ export default {
         .signInWithEmailAndPassword(this.username, this.password)
         .then((result) => {
           console.log("Uspješna prijava!", result);
-
           this.$router.replace({ name: "Home" });
         })
         .catch(function (e) {
