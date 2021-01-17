@@ -1,63 +1,58 @@
 <template>
-  
-  <div class="container gap-3">
-     <div class="row"></div>
-     <div class="row"></div>
-     <div class="row"></div>
-     <div class="row"></div>
-     <div class="row"></div>
-     <div class="row"></div>
-    <div id="inputp0" class="row">
-      <div class="col-sm">
-    <h4>What is youre budget?</h4>
+  <div class="budget">
+    <div class="tekst">
+      <p>Budget:</p>
     </div>
-    <div class="col-sm"></div>
-    <div class="col-sm"></div>
-    
+    <div class="numinput">
+      <div class="input-group mb-3">
+        <span class="input-group-text">kn</span>
+        <input
+          type="number"
+          class="form-control"
+          aria-label="Dollar amount (with dot and two decimal places)"
+        />
+      </div>
     </div>
-    
-  <div class="row gy-6">
-    
-   <div class="col-sm"> 
-    
-    <div id="inputp" class="input-group input-group-lg">
-  <span class="input-group-text" id="inputGroup-sizing-lg">$</span>
-  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg"  placeholder="1000$">
-</div>
-   </div>
-   </div>
-   <div id="butcont" class="row ">
-   <div class="col-sm"> </div>
-     
-     
-       
-          <div id="button" class="col-sm"> 
-            <router-link to="components">
-            <button  type="button" class="btn btn-primary btn-lg">Continue</button>
-            </router-link>
-          </div>
-   </div>   
-    
+    <div class="ssd">
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          value=""
+          id="flexCheckDefault"
+        />
+        <label class="form-check-label" for="flexCheckDefault">
+          <p>Do you want a SSD?</p>
+        </label>
+      </div>
     </div>
-  
+    <div class="next">
+      <router-link to="components">Next</router-link>
+    </div>
+  </div>
 </template>
-<script>
 
-
-
-</script>
-<style>
-
-#inputp0{
-  padding-top: 250px;
+<style lang="scss">
+.budget {
 }
-#butcont{
-padding-top: 300px;
-
+.tekst {
+  margin-top: 100px;
+  font-weight: bold;
+  font-size: 50px;
 }
-#button{
-  margin-bottom: 300px;
+.numinput {
+  width: 50%;
 }
-
-
+.ssd {
+  font-size: 20px;
+}
+.next {
+  font-size: 30px;
+  margin-top: 30px;
+  background: #0978b8;
+  width: fit-content;
+  height: auto;
+  padding: 10px;
+  margin-bottom: 570px;
+}
 </style>
