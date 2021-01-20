@@ -1,7 +1,7 @@
 <template>
   <div class="container">
      <div class="row">
-       <h3>CPU</h3>
+       <h3>Power suply</h3>
      </div>
      <div class="row">
        <div id="nazkomp" class="col-sm rounded-pill" ><p id="komp">Intel i9 10900k</p></div>   

@@ -19,11 +19,13 @@
   </div>
 </div>
 </template>
+
 <script>
 export default {
     name:"componentcpu",
 }
 </script>
+
 <style>
 #specif{
   background-color: rgb(51, 51, 51);

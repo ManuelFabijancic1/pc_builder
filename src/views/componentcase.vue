@@ -4,7 +4,7 @@
        <h3>Case</h3>
      </div>
      <div class="row">
-       <div id="nazkomp" class="col-sm rounded-pill" ><p id="komp">case</p></div>   
+       <div id="nazkomp" class="col-sm rounded-pill" ><p id="komp">casea</p></div>   
        <div class="col-sm"></div> 
        <div class="col-sm"></div>   
        </div>

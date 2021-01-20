@@ -4,7 +4,7 @@
        <h3>STORAGE</h3>
      </div>
      <div class="row">
-       <div id="nazkomp" class="col-sm rounded-pill" ><p id="komp">WD</p></div>   
+       <div id="nazkomp" class="col-sm rounded-pill" ><p id="komp">WD 1gb</p></div>   
        <div class="col-sm"></div> 
        <div class="col-sm"></div>   
        </div>

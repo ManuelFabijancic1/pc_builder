@@ -16,7 +16,7 @@
     </div>
   </div>
     <div class="col-sm">
-        <router-link to="componentspecs">
+        <router-link to="componentcpu">
       <div id='card' class="card" style="width: 15rem; ">
   <img class="card-img-top" src="@/assets/cpu.jpg" alt="Card image cap">
   <div class="card-body">
@@ -26,7 +26,7 @@
 </router-link>
     </div>
     <div class="col-sm">
-        <router-link to="componentspecs">
+        <router-link to="componentgpu">
        <div id='card' class="card" style="width: 15rem;">
   <img class="card-img-top" src="@/assets/GPU.jpg" alt="Card image cap">
   <div class="card-body">
@@ -36,7 +36,7 @@
   </router-link>
     </div>
     <div class="col-sm">
-        <router-link to="componentspecs">
+        <router-link to="componentmotherboard">
      <div id='card' class="card" style="width: 15rem;">
   <img class="card-img-top" src="@/assets/motherboard.jpg" alt="Card image cap">
   <div class="card-body">
@@ -45,7 +45,7 @@
   </div>
   </router-link>
     </div>
-    <router-link to="componentspecs">
+    <router-link to="componentram">
     <div id='card' class="card" style="width: 15rem;">
   <img class="card-img-top" src="@/assets/ram.jpg" alt="Card image cap">
   <div class="card-body">
@@ -70,7 +70,7 @@
   </div>
   <div id="drugired" class="row">
     <div class="col-sm">
-        <router-link to="componentspecs">
+        <router-link to="componentpowersuply">
        <div id='card' class="card" style="width: 15rem;">
   <img class="card-img-top" src="@/assets/powersuply.jpg" alt="Card image cap">
   <div class="card-body">
@@ -80,7 +80,7 @@
   </router-link>
     </div>
     <div class="col-sm">
-      <router-link to="componentspecs">
+      <router-link to="componentstorage">
        <div id='card' class="card" style="width: 15rem;">
   <img class="card-img-top" src="@/assets/storage.jpg" alt="Card image cap">
   <div class="card-body">
@@ -90,7 +90,7 @@
   </router-link >
     </div>
     <div class="col-sm">
-        <router-link to="componentspecs">
+        <router-link to="componentcase">
        <div id='card' class="card" style="width: 15rem;">
   <img class="card-img-top" src="@/assets/case.jpg" alt="Card image cap">
   <div class="card-body">
@@ -100,7 +100,7 @@
   </router-link>
     </div>
     <div class="col-sm">
-        <router-link to="componentspecs">
+        <router-link to="componentsystemcooling">
        <div id='card' class="card" style="width: 15rem;">
   <img class="card-img-top" src="@/assets/fan.jpg" alt="Card image cap">
   <div class="card-body">
