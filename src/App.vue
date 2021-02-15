@@ -5,22 +5,32 @@
       <div class="container-fluid">
         <a class="navbar-brand" href="#">
           <a class="navbar-brand" href="#">
-            <router-link to="/"
-              ><img
-                src="@/assets/logo.png"
+            <router-link to="/"><img src="@/assets/logo.png"
                 height="40"
                 class="d-inline-block align-top"
                 alt=""
-                loading="lazy" /></router-link
-          ></a>
+                loading="lazy" /></router-link >
+                </a>
         </a>
 
         <div class="nav-item">
           <div v-if="!store.currentUser" class="links">
+            <div class="col">
+              
             <router-link to="/login">login</router-link>
+            </div>
+             <div class="row"></div>
+            <div class="col">
+            <router-link to="/signup">signup</router-link>
+            </div>
+            
           </div>
           <div v-if="store.currentUser" class="links">
-            <a href="#" @click="logout()" class="nav-link">Logout </a>
+            <div class="row">
+              
+            <p id='tekst1'>Logged in as:</p><a href="#" @click="logout()" class="nav-link">a{{username}} </a>
+            
+            </div>
           </div>
         </div>
       </div>
@@ -29,19 +39,17 @@
     <div class="container">
       <router-view />
     </div>
+ <footer id="foot">
 
-    <!--footer-->
-    <nav id="yes" class="navbar fixed-bottom navbar-dark bg-dark">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#"></a>
-      </div>
-    </nav>
-  </div>
+ </footer>
+    
+</div>
 </template>
 
 <script>
 import store from "@/store";
 import { firebase } from "@/firebase";
+
 
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
@@ -90,5 +98,12 @@ export default {
 }
 #links {
   align: right;
+}
+#tekst1{
+ color:white;
+}
+#foot{
+height: 40px;
+background-color: black;
 }
 </style>

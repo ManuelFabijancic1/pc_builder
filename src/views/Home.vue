@@ -6,9 +6,9 @@
  <div class="col-8">
    <center>
  <welcomebar />
+<router-link to="computertype">
+<button id="nextbutton" type="button" class="btn btn-primary btn-lg">Next</button></router-link>
 
-<div id="nextbutton">
-<router-link to="/computertype">Next</router-link></div>
 
 </center>
  </div>
@@ -43,6 +43,7 @@ export default {
   display: inline-block;
   padding: 8px 16px;
   text-decoration: none;
+  margin-bottom: 560px;
 }
   </style>
  

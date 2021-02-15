@@ -44,7 +44,7 @@
               placeholder="Password"
             />
           </div>
-          <button type="button" @click="signup" class="btn btn-primary">
+          <button id="subbut" type="button" @click="signup" class="btn btn-primary">
             Submit
           </button>
         </form>
@@ -52,8 +52,7 @@
       <div class="col">
         <div class="col">
           <h2 id="login1">Already have an account ?</h2>
-          <router-link to="/login"
-            ><button type="button" class="btn btn-dark">
+          <router-link to="/login"><button type="button" class="btn btn-dark">
               Login
             </button></router-link
           >
@@ -66,8 +65,9 @@
 <script>
 import { firebase } from "@/firebase.js";
 
+
 export default {
-  name: "Signup",
+  name: 'signup',
   data() {
     return {
       username: "",
@@ -93,4 +93,7 @@ export default {
 };
 </script>
 <style>
+#subbut{
+  margin-bottom: 570px;
+}
 </style>

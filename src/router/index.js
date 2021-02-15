@@ -34,17 +34,60 @@ const routes = [
     
     component: () => import(/* webpackChunkName: "components" */'../views/components.vue')
   },
-  {
-    path: '/componentspecs',
-    name: 'componentspecs',
-    
-    component: () => import(/* webpackChunkName: "componentspecs" */'../views/componentspecs.vue')
-  },
+  
   {
     path: '/computertype',
     name: 'computertype',
     
     component: () => import(/* webpackChunkName: "computertype" */'../views/computertype.vue')
+  },
+  {
+    path: '/componentcpu',
+    name: 'componentcpu',
+    
+    component: () => import(/* webpackChunkName: "componentcpu" */'../views/componentcpu.vue')
+  },
+  {
+    path: '/componentgpu',
+    name: 'componentgpu',
+    
+    component: () => import(/* webpackChunkName: "componentspecs" */'../views/componentgpu.vue')
+  },
+  {
+    path: '/componentram',
+    name: 'componentram',
+    
+    component: () => import(/* webpackChunkName: "componentspecs" */'../views/componentram.vue')
+  },
+  {
+    path: '/componentpowersuply',
+    name: 'componentpowersuply',
+    
+    component: () => import(/* webpackChunkName: "componentspecs" */'../views/componentpowersuply.vue')
+  },
+  {
+    path: '/componentcase',
+    name: 'componentcase',
+    
+    component: () => import(/* webpackChunkName: "componentspecs" */'../views/componentcase.vue')
+  },
+  {
+    path: '/componentstorage',
+    name: 'componentstorage',
+    
+    component: () => import(/* webpackChunkName: "componentspecs" */'../views/componentstorage.vue')
+  },
+  {
+    path: '/componentmotherboard',
+    name: 'componentmotherboard',
+    
+    component: () => import(/* webpackChunkName: "componentspecs" */'../views/componentmotherboard.vue')
+  },
+  {
+    path: '/componentsystemcooling',
+    name: 'componentsystemcooling',
+    
+    component: () => import(/* webpackChunkName: "componentspecs" */'../views/componentsystemcooling.vue')
   }
 ]
 
