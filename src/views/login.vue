@@ -34,8 +34,7 @@ email"
         </div>
         <div class="col-sm">
           <h2 id="signup1">Dont have an account?</h2>
-          <router-link id="link" to="/signup"
-            ><button type="button" class="btn btn-dark">
+          <router-link id="link" to="/signup"><button id="signupbut" type="button" class="btn btn-dark">
               Signup
             </button></router-link
           >
@@ -83,3 +82,9 @@ export default {
   },
 };
 </script>
+<style>
+#signupbut{
+margin-bottom: 850px;
+}
+
+</style>
