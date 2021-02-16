@@ -30,7 +30,6 @@
   margin-top: 50px;
    margin-bottom: 490px;
 }
-
 #nazkomp{
 height: 50px;
 background-color: white;
