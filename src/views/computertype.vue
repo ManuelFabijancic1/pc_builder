@@ -4,17 +4,17 @@
   <div class="container">
   <div class="row">
     <div class="col-sm">
-        <router-link to="budget">
-      <div id='card1' class="card" style="width: 20rem; ">
+        <router-link v-on:click.native="builder.computertype=1;" to="budget">
+      <div id='card1' class="card" style="width: 20rem;">
   <img class="card-img-top" src="@/assets/gamingpc.png" alt="Card image cap">
   <div class="card-body">
     <p class="card-text">Gaming Computer</p>
   </div>
-</div>
+</div >
 </router-link>
     </div>
     <div class="col-sm">
-        <router-link to="budget">
+        <router-link to="budget" v-on:click.native="builder.computertype=2;">
        <div id='card1' class="card" style="width: 20rem;">
   <img class="card-img-top" src="@/assets/basic.png" alt="Card image cap">
   <div class="card-body">
@@ -24,7 +24,7 @@
   </router-link>
     </div>
     <div class="col-sm">
-        <router-link to="budget">
+        <router-link to="budget" v-on:click.native="builder.computertype=3;">
      <div id='card1' class="card" style="width: 20rem;">
   <img class="card-img-top" src="@/assets/editing.jpg" alt="Card image cap">
   <div class="card-body">
@@ -36,7 +36,7 @@
   </div>
   <div id="donjired" class="row">
     <div class="col-sm">
-        <router-link to="budget">
+        <router-link to="budget" v-on:click.native="builder.computertype=4;">
        <div id='card1' class="card" style="width: 20rem;">
   <img class="card-img-top" src="@/assets/workstation.jpg" alt="Card image cap">
   <div class="card-body">
@@ -48,7 +48,7 @@
     <div class="col-sm">
     </div>
     <div class="col-sm">
-        <router-link to="budget">
+        <router-link to="budget" v-on:click.native="builder.computertype=5;">
        <div id='card1' class="card" style="width: 20rem;">
   <img class="card-img-top" src="@/assets/thebest.jpg" alt="Card image cap">
   <div class="card-body">
@@ -63,12 +63,20 @@
 </template>
 
 <script>
-
-
+import builder from '@/builder';
 export default {
-  name: "comptype",
+  name: 'comptype',
+  data() {
+    return{ 
+      builder,};
+  }};
+   
+var test=function(){
+    
+      builder.computertype=1;
 }
 </script>
+
 <style>
 #p{
     text-: black;
