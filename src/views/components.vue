@@ -131,6 +131,10 @@
 </div>
 </template>
 
+<script>
+</script>
+
+
 <style >
 #buildinfo{
   padding-top: 20px;
@@ -162,5 +166,4 @@ align-self: center;
 #resetbuild{
   margin-bottom: 50px;
 }
-
 </style>
