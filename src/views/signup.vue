@@ -5,7 +5,7 @@
       <div class="col">
         <form>
           <div class="form-group">
-            <label for="exampleInputEmail1">UserName</label>
+            <label for="exampleInputUsername">UserName</label>
             <input
               type="Name"
               v-model="username"
@@ -54,8 +54,7 @@
           <h2 id="login1">Already have an account ?</h2>
           <router-link to="/login"><button type="button" class="btn btn-dark">
               Login
-            </button></router-link
-          >
+            </button></router-link>
         </div>
       </div>
     </div>
@@ -64,6 +63,8 @@
 
 <script>
 import { firebase } from "@/firebase.js";
+
+
 export default {
   name: 'signup',
   data() {
