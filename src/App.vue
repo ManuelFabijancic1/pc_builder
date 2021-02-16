@@ -49,8 +49,6 @@
 <script>
 import store from "@/store";
 import { firebase } from "@/firebase";
-
-
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
     console.log("***", user.email);
@@ -89,7 +87,6 @@ export default {
   background-color: #353535;
   height: 70px;
 }
-
 #nav-item {
   border: 10px;
 }
