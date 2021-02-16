@@ -6,13 +6,25 @@
     <div class="numinput">
       <div class="input-group mb-3">
         <span class="input-group-text">kn</span>
-        <input id
+        <input
+          id
           type="number"
           v-model="builder.money"
           class="form-control"
           aria-label="Dollar amount (with dot and two decimal places)"
         />
       </div>
+    </div>
+    <div class="cpu">
+      <select
+        class="form-select"
+        v-model="builder.cpu"
+        aria-label="Default select example"
+      >
+        <option selected>Please select CPU type?</option>
+        <option value="AM4">AMD</option>
+        <option value="1151">Intel</option>
+      </select>
     </div>
     <div class="ssd">
       <div class="form-check">
@@ -28,48 +40,96 @@
         </label>
       </div>
     </div>
-    <p> value:{{builder.money}} ssd:{{builder.ssd}} computer type: {{builder.computertype}}</p>
-    <div class="next" onclick="savebudget">
-      <router-link to="components">Next</router-link>
+    <p>
+      value:{{ builder.money }} ssd:{{ builder.ssd }} computer type:
+      {{ builder.computertype }} CPU:{{ builder.cpu }}
+
+    </p>
+    <div class="next">
+      <router-link to="components" v-on:click.native="kalkulator()"
+        >Next</router-link
+      >
     </div>
   </div>
 </template>
 
 <script>
 import builder from '@/builder';
+import store from "@/store";
+import { firebase } from "@/firebase";
+import { db } from "@/firebase";
+
 export default {
   name: 'budget',
   data() {
     return{ 
-      builder,};
-  }
+      builder,
+      };
+  },
+ 
+  mounted() {
+            this.getData();
+      },
+ getData() {
+                  db.collection("CPU").where("cijena", '<=', this.builder.cpucijena).orderby(descending).limit(1)
+                        .get()
+                        .then((query) => {
+                              query.forEach((doc) => {
+                                    const data = doc.data();
+
+                                    this.builder.pomcpu.push(
+                                          data.cijena,
+                                    );
+
+                                    this.builder.cpusocket.push(
+                                          data.socket,
+                                    );
+                              });
+                        });
+            },
+  computed: {
+        kalkulator() {
+          console.log('bruh!');
+          console.log(this.builder.computertype);
+          switch (String(this.builder.computertype)) {
+            case '1': 
+                  //gaming
+            
+            break;
+            case '2': 
+                  //basic
+                  console.log("god");
+                  this.builder.cpucijena = this.builder.money * 0.5;
+                  
+                  
+           
+      
+                  
+            break;
+            case '3': 
+                  //editing
+            
+            break;
+            case '4': 
+                  //workstation
+            
+            break;
+            case '5': 
+                  //fastest
+            
+            break;
+          }
+  
+        },
+    },
 }
 </script>
 
 <style lang="scss">
-.budget {
+.cpu {
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
-.tekst {
-  margin-top: 100px;
-  font-weight: bold;
-  font-size: 50px;
-}
-.numinput {
-  width: 50%;
-}
-.ssd {
-  font-size: 20px;
-}
-.next {
-  font-size: 30px;
-  margin-top: 30px;
-  background: #0978b8;
-  width: fit-content;
-  height: auto;
-  padding: 10px;
-  margin-bottom: 570px;
-}
-</style>
 .budget {
 }
 .tekst {

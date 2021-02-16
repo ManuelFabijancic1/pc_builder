@@ -14,7 +14,7 @@
 </router-link>
     </div>
     <div class="col-sm">
-        <router-link to="budget" v-on:click.native="builder.computertype=2;">
+        <router-link to="budget" v-on:click.native="builder.computertype='2';">
        <div id='card1' class="card" style="width: 20rem;">
   <img class="card-img-top" src="@/assets/basic.png" alt="Card image cap">
   <div class="card-body">
@@ -64,17 +64,13 @@
 
 <script>
 import builder from '@/builder';
+
 export default {
   name: 'comptype',
   data() {
     return{ 
       builder,};
   }};
-   
-var test=function(){
-    
-      builder.computertype=1;
-}
 </script>
 
 <style>

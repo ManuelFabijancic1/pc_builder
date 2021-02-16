@@ -21,6 +21,8 @@
 
 <script>
 import Welcomebar from '../components/welcomebar.vue'
+
+
 export default {
   name: 'Home',
   components: {
@@ -29,6 +31,7 @@ export default {
   }
 }
 </script >
+
 <style scoped lang="scss">
 #nextbutton {
  background: #0978b8; 
@@ -43,3 +46,4 @@ export default {
   margin-bottom: 560px;
 }
   </style>
+ 

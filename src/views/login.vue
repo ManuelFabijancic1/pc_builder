@@ -9,13 +9,11 @@
               <label for="exampleInputEmail1">Email address</label>
               <input
                 type="email"
-                v-model="username"
+                v-model="email"
                 class="form-control"
                 id="exampleInputEmail1"
                 aria-describedby="emailHelp"
-                placeholder="Enter
-email"
-              />
+                placeholder="Enter email"/>
             </div>
             <div class="form-group">
               <label for="exampleInputPassword1">Password</label>
@@ -36,8 +34,7 @@ email"
           <h2 id="signup1">Dont have an account?</h2>
           <router-link id="link" to="/signup"><button id="signupbut" type="button" class="btn btn-dark">
               Signup
-            </button></router-link
-          >
+            </button></router-link>
         </div>
       </div>
     </div>
@@ -59,70 +56,17 @@ export default {
   name: "login",
   data() {
     return {
-      username: "",
+      email: "",
       password: "",
     };
   },
   methods: {
     login() {
-      console.log("login...." + this.username);
+      console.log("login...." + this.email);
       console;
       firebase
         .auth()
-        .signInWithEmailAndPassword(this.username, this.password)
-        .then((result) => {
-          console.log("Uspješna prijava!", result);
-          this.$router.replace({ name: "Home" });
-        })
-        .catch(function (e) {
-          console.error("Greška", e);
-        });
-    },
-  },
-};
-</script>
-<style>
-#signupbut{
-margin-bottom: 850px;
-}
-</style>
-          <h2 id="signup1">Dont have an account?</h2>
-          <router-link id="link" to="/signup"><button id="signupbut" type="button" class="btn btn-dark">
-              Signup
-            </button></router-link
-          >
-        </div>
-      </div>
-    </div>
-  </div>
-</template>
-
-<style>
-#signup1 {
-  text-align: center;
-}
-#link {
-  text-align: center;
-}
-</style>
-
-<script>
-import { firebase } from "@/firebase.js";
-export default {
-  name: "login",
-  data() {
-    return {
-      username: "",
-      password: "",
-    };
-  },
-  methods: {
-    login() {
-      console.log("login...." + this.username);
-      console;
-      firebase
-        .auth()
-        .signInWithEmailAndPassword(this.username, this.password)
+        .signInWithEmailAndPassword(this.email, this.password)
         .then((result) => {
           console.log("Uspješna prijava!", result);
 
