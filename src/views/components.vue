@@ -165,7 +165,12 @@
     <div id="aboutbuild" class="row">
       <div class="col-sm rounded-pill">
         <h6 id="buildinfo">Build good</h6>
-        <p>pomcpu: {{builder.pomcpu}} socket: {{builder.socket}}</p>
+        <p>pomcpu: {{builder.cpucijena}} socket: {{builder.cpusocket}} cijena: {{ builder.stvarnacijenacpu}} naziv:{{builder.cpunaziv}}
+      
+        </p>
+
+        pomcpu: {{ builder.ostatak1}} socket:{{builder.mbsocket}} naziv: {{builder.mbnaziv}}  cijena:{{builder.mbstvarnacijena}}
+        
       </div>
     </div>
     <div class="row">

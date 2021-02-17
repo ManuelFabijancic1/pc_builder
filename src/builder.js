@@ -1,20 +1,32 @@
 export default {
       ssd: '',
-      money: '',
+      money: "",
       computertype: '',
       cpu: '',
       cijena:'',
-      socket:'',
-      mbcijena: '',
+      socket:"",
+
+      mbnaziv:"",
+      mbcijena: "",
+      mbstvarnacijena:"",
+      ostatak1:"",
+      pomvar0:"",
+      pomvar1:"",
+      mbsocket:"",
+
       cpucijena: '',
+      cpunaziv:"",
+      stvarnacijenacpu:"",
+
       gpucijena: '',
       stocijena: '',
       casecijena: '',
       ramcijena: '',
       kulcijena: '',
       powercijena: '',
-      pomcpu: '',
-      cpusocket: '',
+      
+      cpusocket:"",
+      
  /*     
      
 
