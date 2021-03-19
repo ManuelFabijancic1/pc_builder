@@ -15,13 +15,16 @@
         />
       </div>
     </div>
+    
     <div class="cpu">
+      <h6>Select cpu type</h6>
       <select
         class="form-select"
-        v-model="builder.cpu"
+        v-model="builder.socket"
         aria-label="Default select example"
+        aria-placeholder="Please select CPU type?"
       >
-        <option selected>Please select CPU type?</option>
+      
         <option value="AM4">AMD</option>
         <option value="1151">Intel</option>
       </select>
@@ -42,9 +45,10 @@
     </div>
     <p>
       value:{{ builder.money }} ssd:{{ builder.ssd }} computer type:
-      {{ builder.computertype }} CPU:{{ builder.cpu }}
+      {{ builder.computertype }} CPU:{{ builder.socket }}
 
     </p>
+     <p>pomcpu: {{builder.pomcpu}} socket: {{builder.cpusocket}}</p>
     <div class="next">
       <router-link to="components" v-on:click.native="kalkulator()"
         >Next</router-link
@@ -64,29 +68,15 @@ export default {
   data() {
     return{ 
       builder,
+      
       };
+       
   },
  
-  mounted() {
-            this.getData();
-      },
- getData() {
-                  db.collection("CPU").where("cijena", '<=', this.builder.cpucijena).orderby(descending).limit(1)
-                        .get()
-                        .then((query) => {
-                              query.forEach((doc) => {
-                                    const data = doc.data();
+  
 
-                                    this.builder.pomcpu.push(
-                                          data.cijena,
-                                    );
+ 
 
-                                    this.builder.cpusocket.push(
-                                          data.socket,
-                                    );
-                              });
-                        });
-            },
   computed: {
         kalkulator() {
           console.log('bruh!');
@@ -94,16 +84,76 @@ export default {
           switch (String(this.builder.computertype)) {
             case '1': 
                   //gaming
-            
+          
             break;
             case '2': 
                   //basic
                   console.log("god");
-                  this.builder.cpucijena = this.builder.money * 0.5;
                   
+                  builder.cpucijena = builder.money * 0.5;
+
+
+                     db.collection("CPU").where("cijena", "<=", String(builder.cpucijena)).orderBy("cijena", "desc").limit(1)
+                        .get()
+                        .then((query) => {
+                          this.builder.stvarnacijenacpu= []
+                          this.builder.cpusocket=[]
+                          
+                              query.forEach((doc) => {
+                                    const data = doc.data();
+                                    
+                                  
+                                   this.builder.stvarnacijenacpu.push(
+                                          data.cijena,
+                                    );
+
+                                    this.builder.cpusocket.push(
+                                          data.socket,
+                                    );
+                                    this.builder.cpunaziv.push(
+                                         data.ime
+                                   ); 
+                              });
+                        });
+
+               builder.ostatak1=Number(builder.money)-Number(builder.stvarnacijenacpu[0]);
+               
+               
+                builder.mbcijena=builder.ostatak1*0.3;
+
+                  db.collection("MOTHERB").where("cijena", "<=", String(builder.mbcijena)).orderBy("cijena", "desc").limit(1)
+                        .get()
+                        .then((query) => {
+                           this.builder.mbstvarnacijena=[]
+                           this.builder.mbnaziv=[]
+                            this.builder.mbsocket=[]
+                            this.builder.mbstvarnacijena=[]
+                              query.forEach((doc) => {
+                                    const data = doc.data();
+
+                                    this.builder.mbstvarnacijena.push(
+                                          data.cijena,
+                                        
+                                    );
+                                    this.builder.mbnaziv.push(
+                                          data.ime,
+                                        
+                                    );
+                                    this.builder.mbsocket.push(
+                                      data.socket
+                                    );
+                                    this.builder.mbstvarnacijena.pus(
+                                      data.cijena
+                                    )
+                          
+                                
+                              });
+                        });
                   
-           
-      
+            
+         
+
+         
                   
             break;
             case '3': 
