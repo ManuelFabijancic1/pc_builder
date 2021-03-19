@@ -4,21 +4,38 @@
        <h3>RAM</h3>
      </div>
      <div class="row">
-       <div id="nazkomp" class="col-sm rounded-pill" ><p id="komp">Supa fest ram</p></div>   
+       <div id="nazkomp" class="col-sm rounded-pill" ><p id="komp">{{String(builder.ramnaziv)}}</p></div>   
        <div class="col-sm"></div> 
        <div class="col-sm"></div>   
        </div>
   <div id="specif" class="row">
-    
+    <p id="info_o_ram">
+    {{String(builder.raminfo)}}
+    </p>
   </div>
   <div id="shopnow" class="row">
     <div class="col-sm"></div>
-      
+     <a :href=builder.ramlink> 
     <div class="col-sm"><button id="butshop" type="button" class="btn btn-primary btn-lg">SHOP NOW!</button></div>
+     </a>
      <div class="col-sm"></div>
   </div>
 </div>
 </template>
+<script>
+import store from "@/store";
+import { firebase } from "@/firebase";
+import { db } from "@/firebase";
+import builder from "@/builder";
+
+export default {
+  data() {
+    return{ 
+      builder,
+      };
+  },
+}
+</script>
 <style>
 #specif{
   background-color: rgb(51, 51, 51);
