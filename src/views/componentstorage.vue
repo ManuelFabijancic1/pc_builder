@@ -4,21 +4,38 @@
        <h3>STORAGE</h3>
      </div>
      <div class="row">
-       <div id="nazkomp" class="col-sm rounded-pill" ><p id="komp">WD 1gb</p></div>   
+       <div id="nazkomp" class="col-sm rounded-pill" ><p id="komp">{{String(builder.storagenaziv)}}</p></div>   
        <div class="col-sm"></div> 
        <div class="col-sm"></div>   
        </div>
   <div id="specif" class="row">
-    
+    <p id="storage_info">
+    {{String(builder.storageinfo)}}
+    </p>
   </div>
   <div id="shopnow" class="row">
     <div class="col-sm"></div>
-      
+      <a :href=builder.storagelink>
     <div class="col-sm"><button id="butshop" type="button" class="btn btn-primary btn-lg">SHOP NOW!</button></div>
+      </a>
      <div class="col-sm"></div>
   </div>
 </div>
 </template>
+<script>
+import store from "@/store";
+import { firebase } from "@/firebase";
+import { db } from "@/firebase";
+import builder from "@/builder";
+
+export default {
+  data() {
+    return{ 
+      builder,
+      };
+  },
+}
+</script>
 <style>
 #specif{
   background-color: rgb(51, 51, 51);

@@ -1,71 +1,79 @@
+
+
 export default {
+      name:"builder",
+
       ssd: '',
-      money: '',
+      money: "",
       computertype: '',
       cpu: '',
       cijena:'',
-      socket:'',
-      mbcijena: '',
-      cpucijena: '',
+      socket:"",
+
+      mbnaziv:"",
+      mbcijena: "",
+      mbstvarnacijena:"",
+      mblink:"",
+      mbinfo:"",
+      ostatak1:"",
+      mbsocket:"",
+
+      
+
+      cpucijena: [],
+      cpunaziv:[],
+      stvarnacijenacpu: [],
+      cpuinfo:[],
+     cpulink:[],
+     cpusocket:"",
+
       gpucijena: '',
-      stocijena: '',
-      casecijena: '',
-      ramcijena: '',
-      kulcijena: '',
-      powercijena: '',
-      pomcpu: '',
-      cpusocket: '',
- /*     
+      gpustvarnacijena:"",
+      ostatkgpu:"",
+      gpunaziv:"",
+      gpuinfo:"",
+      gpulink:"",
      
 
-      mounted() {
-            this.getData();
-      },
-            getData() {
-                  db.collection("CPU").where("cijena", '<=', cpucijena).orderby(descending).limit(1)
-                        .get()
-                        .then((query) => {
-                              query.forEach((doc) => {
-                                    const data = doc.data();
-
-                                    this.pomcpu.push(
-                                          data.cijena,
-                                    );
-
-                                    this.cpusocket.push(
-                                          data.socket,
-                                    );
-                              });
-                        });
-            },
-      },
+      ramcijena: '',
+      ramnaziv:"",
+      ramlink:"",
+      raminfo:"",
+      ostatak2:"",
+     ostatak3:"",
+      
 
 
-function kalk(computertype, money, cpu, ssd) {
-      switch (computertype) {
-            case 2: {
-                  //basic
-                  cpucijena = money * 0.5;
-                  console.log("god")
+      powerscijena: '',
+      powersstvarnacijena:"",
+      ostatak4:"",
+      powerslink:"",
+      powersinfo:"",
+      powersnaziv:"",
 
-            }
-            case 1: {
-                  //gaming
+      storagevijena:"",
+      storagestvarnacijena:"",
+      ostatak5:"",
+      storagenaziv:"",
+      storageinfo:"",
+      storagelink:"",
 
-            }
-            case 3: {
-                  //editing
+      casecijena:"",
+      casestvarnacijena:"",
+      ostatak6:"",
+      casenaziv:"",
+      caseinfo:"",
+      caselink:"",
 
-            }
-            case 4: {
-                  //workstation
+      coolingcijena:"",
+      coolingstvarnacijena:"",
+      ostatak7:"",
+      coolingnaziv:"",
+      coolinginfo:"",
+      coolinglink:"",
+      
+    
 
-            }
-            case 5: {
-                  //fastest
 
-            }
-      }
-}   
-*/
+     
 };

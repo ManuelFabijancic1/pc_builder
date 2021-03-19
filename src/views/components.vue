@@ -1,21 +1,12 @@
 <template>
   <div class="container">
+
     <div class="row">
-      <div class="row">
-        <div id="nazivkomponente" class="col-sm rounded-pill">
-          <samp>This text sample output from a computer program.</samp>
-        </div>
-        <div id="nazivkomponente" class="col-sm rounded-pill">
-          <samp>This text sample output from a computer program.</samp>
-        </div>
-        <div id="nazivkomponente" class="col-sm rounded-pill">
-          <samp>This text sample output from a computer program.</samp>
-        </div>
-        <div id="nazivkomponente" class="col-sm rounded-pill">
-          <samp>This text sample output from a computer program.</samp>
-        </div>
-      </div>
+  
       <div class="col-sm">
+        <div id="nazivkomponente" class="col-sm rounded-pill">
+          <samp>{{String(builder.cpunaziv)}}</samp>
+        </div>
         <router-link to="componentcpu">
           <div id="card" class="card" style="width: 15rem">
             <img
@@ -30,6 +21,9 @@
         </router-link>
       </div>
       <div class="col-sm">
+        <div id="nazivkomponente" class="col-sm rounded-pill">
+          <samp>{{String(builder.gpunaziv)}}</samp>
+        </div>
         <router-link to="componentgpu">
           <div id="card" class="card" style="width: 15rem">
             <img
@@ -44,6 +38,9 @@
         </router-link>
       </div>
       <div class="col-sm">
+        <div id="nazivkomponente" class="col-sm rounded-pill">
+          <samp>{{String(builder.mbnaziv)}}</samp>
+        </div>
         <router-link to="componentmotherboard">
           <div id="card" class="card" style="width: 15rem">
             <img
@@ -57,35 +54,30 @@
           </div>
         </router-link>
       </div>
-      <router-link to="componentram">
-        <div id="card" class="card" style="width: 15rem">
-          <img
-            class="card-img-top"
-            src="@/assets/ram.jpg"
-            alt="Card image cap"
-          />
-          <div class="card-body">
-            <p class="card-text">RAM</p>
-          </div>
+      <div class="col-sm">
+        <div id="nazivkomponente" class="col-sm rounded-pill">
+          <samp>{{String(builder.ramnaziv)}}</samp>
         </div>
-      </router-link>
-    </div>
-    <div class="row">
-      <div id="nazivkomponente" class="col-sm rounded-pill">
-        <samp>This text sample output from a computer program.</samp>
-      </div>
-      <div id="nazivkomponente" class="col-sm rounded-pill">
-        <samp>This text sample output from a computer program.</samp>
-      </div>
-      <div id="nazivkomponente" class="col-sm rounded-pill">
-        <samp>This text sample output from a computer program.</samp>
-      </div>
-      <div id="nazivkomponente" class="col-sm rounded-pill">
-        <samp>This text sample output from a computer program.</samp>
+        <router-link to="componentcpu">
+          <div id="card" class="card" style="width: 15rem">
+            <img
+              class="card-img-top"
+              src="@/assets/ram.jpg"
+              alt="Card image cap"
+            />
+            <div class="card-body">
+              <p class="card-text">RAM</p>
+            </div>
+          </div>
+        </router-link>
       </div>
     </div>
+   
     <div id="drugired" class="row">
       <div class="col-sm">
+        <div id="nazivkomponente" class="col-sm rounded-pill">
+          <samp>{{String(builder.powersnaziv)}}</samp>
+        </div>
         <router-link to="componentpowersuply">
           <div id="card" class="card" style="width: 15rem">
             <img
@@ -100,6 +92,9 @@
         </router-link>
       </div>
       <div class="col-sm">
+        <div id="nazivkomponente" class="col-sm rounded-pill">
+          <samp>{{String(builder.storagenaziv)}}</samp>
+        </div>
         <router-link to="componentstorage">
           <div id="card" class="card" style="width: 15rem">
             <img
@@ -114,6 +109,9 @@
         </router-link>
       </div>
       <div class="col-sm">
+        <div id="nazivkomponente" class="col-sm rounded-pill">
+          <samp>{{String(builder.casenaziv)}}</samp>
+        </div>
         <router-link to="componentcase">
           <div id="card" class="card" style="width: 15rem">
             <img
@@ -128,6 +126,9 @@
         </router-link>
       </div>
       <div class="col-sm">
+        <div id="nazivkomponente" class="col-sm rounded-pill">
+          <samp>{{String(builder.coolingnaziv)}}</samp>
+        </div>
         <router-link to="componentsystemcooling">
           <div id="card" class="card" style="width: 15rem">
             <img
@@ -165,7 +166,14 @@
     <div id="aboutbuild" class="row">
       <div class="col-sm rounded-pill">
         <h6 id="buildinfo">Build good</h6>
-        <p>pomcpu: {{builder.pomcpu}} socket: {{builder.socket}}</p>
+        <p>pomcpu: {{builder.cpucijena}} socket: {{String(builder.cpusocket)}} cijena: {{ String(builder.stvarnacijenacpu)}} naziv:{{String(builder.cpunaziv)}}
+      
+        </p>
+
+        pomcpu: {{String(builder.stvarnacijenacpu)}} socket:{{String(builder.mbsocket)}} naziv: {{String(builder.mbnaziv)}}  cijena:{{String(builder.mbstvarnacijena)}}
+         <p>
+         pomcpu3: {{ builder.cooolingcijena}} socket: naziv:   cijena:
+         </p>
       </div>
     </div>
     <div class="row">
@@ -197,43 +205,16 @@ import { firebase } from "@/firebase";
 import { db } from "@/firebase";
 import builder from "@/builder";
 
+
 export default {
   data() {
     return{ 
-      builder,
+      builder
+     
       };
   },
-
-  /*
-  data: function () {
-    return {
-      cards: [],
-      x: [],
-    };
-  },
-
-  mounted() {
-    this.getData();
-  },
-  methods: {
-    getData() {
-      console.log("firebase dohvat....");
-
-      db.collection("GPU")
-        .where("cijena", "==", "9999")
-        .get()
-        .then((query) => {
-          query.forEach((doc) => {
-            const data = doc.data();
-
-            this.cards.push(data.ime);
-
-            this.x.push(data.desc);
-          });
-        });
-    },
-  },*/
-};
+  
+}
 </script>
 
 
@@ -250,11 +231,9 @@ export default {
   align-self: center;
 }
 #nazivkomponente {
-  margin-top: 10px;
+  margin-top:2%;
   background-color: white;
-  align-content: center;
-  margin-top: 30px;
-  margin-left: 30px;
+  
 }
 #naslov {
   margin-top: 40px;

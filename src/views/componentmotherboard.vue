@@ -4,22 +4,40 @@
        <h3>Mother board</h3>
      </div>
      <div class="row">
-       <div id="nazkomp" class="col-sm rounded-pill" ><p id="komp">strix rog z90</p></div>   
+       <div id="nazkomp" class="col-sm rounded-pill" ><p id="komp">{{String(builder.mbnaziv)}}</p></div>   
        <div class="col-sm"></div> 
        <div class="col-sm"></div>   
        </div>
   <div id="specif" class="row">
-    
+    <p id="info_o_mb">
+    {{String(builder.mbinfo)}}
+    </p>
   </div>
   <div id="shopnow" class="row">
     <div class="col-sm"></div>
-      
+      <a :href=builder.mblink target="_blank">
     <div class="col-sm"><button id="butshop" type="button" class="btn btn-primary btn-lg">SHOP NOW!</button></div>
+      </a>
      <div class="col-sm"></div>
   </div>
 </div>
 </template>
+<script>
+import store from "@/store";
+import { firebase } from "@/firebase";
+import { db } from "@/firebase";
+import builder from "@/builder";
+
+export default {
+  data() {
+    return{ 
+      builder,
+      };
+  },
+}
+</script>
 <style>
+
 #specif{
   background-color: rgb(51, 51, 51);
   border-radius: 25px;
