@@ -50,9 +50,9 @@
     </p>
      <p>pomcpu: {{builder.pomcpu}} socket: {{builder.cpusocket}}</p>
     <div class="next">
-      <router-link to="components" v-on:click.native="kalkulator()"
-        >Next</router-link
-      >
+      <router-link to="components" v-on:click.native="kalkulator()">
+            <button type="button" class="btn btn-primary btn-lg">Next</button>
+            </router-link>
     </div>
   </div>
 </template>
@@ -68,9 +68,6 @@ export default {
   data() {
     return{ 
       builder,
-      
-      
-      
       };
        
   },
@@ -1424,13 +1421,15 @@ export default {
 .ssd {
   font-size: 20px;
 }
-.next {
+
+
+.next {/*
   font-size: 30px;
   margin-top: 30px;
   background: #0978b8;
   width: fit-content;
   height: auto;
-  padding: 10px;
-  margin-bottom: 570px;
+  padding: 10px;*/
+  margin-bottom: 500px;
 }
 </style>

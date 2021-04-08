@@ -179,10 +179,9 @@
     <div class="row">
       <div id="resetbuild" class="col-sm">
         <router-link to=""
-          ><button type="button" class="btn btn-primary btn-lg">
+          ><button type="button" @click="savebuild()" class="btn btn-primary btn-lg">
             Save Build
-          </button></router-link
-        >
+          </button></router-link>
       </div>
       <div class="col-sm"></div>
       <div class="col-sm"></div>
@@ -209,12 +208,27 @@ import builder from "@/builder";
 export default {
   data() {
     return{ 
-      builder
+      builder,
+      
      
       };
   },
-  
-}
+methods: {
+    savebuild() {
+      db.collection('users').doc(this.email).set({
+        case: String(builder.casenaziv),
+        cpu: String(builder.cpunaziv),
+        gpu: String(builder.gpunaziv),
+        motherboard: String(builder.mbnaziv),
+        powersupply: String(builder.powersnaziv),
+        ram: String(builder.ramnaziv),
+        storage: String(builder.storagenaziv),
+        systemcooling: String(builder.coolingnaziv)
+      });
+    }
+  }
+};
+
 </script>
 
 

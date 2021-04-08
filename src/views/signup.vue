@@ -5,15 +5,6 @@
       <div class="col">
         <form>
           <div class="form-group">
-            <label for="exampleInputUsername">UserName</label>
-            <input
-              type="Name"
-              v-model="username"
-              class="form-control"
-              id="exampleInputname1"
-              aria-describedby="NameHelp"
-              placeholder="Enter Username"
-            />
             <label for="exampleInputEmail1">Email address</label>
             <input
               type="email"
@@ -44,7 +35,7 @@
               placeholder="Password"
             />
           </div>
-          <button id="subbut" type="button" @click="signup" class="btn btn-primary">
+          <button id="subbut" type="button" @click="signup()" class="btn btn-primary">
             Submit
           </button>
         </form>
@@ -69,7 +60,6 @@ export default {
   name: 'signup',
   data() {
     return {
-      username: "",
       email: "",
       password: "",
       passwordRepeat: "",
@@ -79,9 +69,10 @@ export default {
     signup() {
       firebase
         .auth()
-        .createUserWithEmailAndPassword(this.username, this.password)
+        .createUserWithEmailAndPassword(this.email, this.password)
         .then(function () {
           console.log("Uspješna registracija");
+          this.$router.replace({ name: 'login' });
         })
         .catch(function (error) {
           console.error("Greška", error);

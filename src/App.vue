@@ -15,20 +15,19 @@
 
         <div class="nav-item">
           <div v-if="!store.currentUser" class="links">
-            <div class="col">
+            <div class="row">
               
-            <router-link to="/login">login</router-link>
-            </div>
-             <div class="row"></div>
-            <div class="col">
-            <router-link to="/signup">signup</router-link>
+            <router-link to="/login"> <button type="button" class="btn btn-primary">login</button></router-link>
+            <span class="razmak">
+            <p>_</p></span>
+            <router-link to="/signup"> <button type="button" class="btn btn-primary">signup</button></router-link>
             </div>
             
           </div>
           <div v-if="store.currentUser" class="links">
             <div class="row">
               
-            <p id='tekst1'>Logged in as:</p><a href="#" @click="logout()" class="nav-link">a{{username}} </a>
+            <a href="#" @click.prevent="logout()" class="nav-link"><button type="button" class="btn btn-primary">logout</button></a>
             
             </div>
           </div>
@@ -49,17 +48,27 @@
 <script>
 import store from "@/store";
 import { firebase } from "@/firebase";
-
+import router from '@/router';
 
 firebase.auth().onAuthStateChanged((user) => {
-  if (user) {
-    console.log("***", user.email);
-    store.currentUser = user.email;
-  } else {
-    console.log("**** No user");
-    store.currentUser = null;
-  }
-});
+    const currentRoute = router.currentRoute;
+
+    if (user) {
+        console.log('*** User', user.email);
+        store.currentUser = user.email;
+
+        if (!currentRoute.meta.needsUser) {
+            router.push({ name: 'home' });
+        }
+    } else {
+        console.log('*** No user');
+        store.currentUser = null;
+
+        if (currentRoute.meta.needsUser) {
+            router.push({ name: 'login' });
+        }
+    }
+}); 
 export default {
   name: "app",
   data() {
@@ -105,5 +114,10 @@ export default {
 #foot{
 height: 40px;
 background-color: black;
+} 
+
+.razmak{
+ color: transparent;
+ user-select: none;
 }
 </style>

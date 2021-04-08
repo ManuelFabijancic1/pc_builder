@@ -1,6 +1,7 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+import Home from '../views/Home.vue';
+import store from '@/store';
 
 Vue.use(VueRouter)
 
@@ -8,7 +9,10 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Home
+    component: Home,
+    meta: {
+      needsUser: true,
+    },
   },
   {
     path: '/login',
@@ -88,6 +92,12 @@ const routes = [
     name: 'componentsystemcooling',
     
     component: () => import(/* webpackChunkName: "componentspecs" */'../views/componentsystemcooling.vue')
+  },
+  {
+    path: '/loginhome',
+    name: 'loginhome',
+    
+    component: () => import(/* webpackChunkName: "componentspecs" */'../views/loginhome.vue')
   }
 ]
 
@@ -97,4 +107,16 @@ const router = new VueRouter({
   routes
 })
 
-export default router
+router.beforeEach((to, from, next) => {
+ 
+
+  const noUser = store.currentUser === null;
+
+  if (noUser && to.meta.needsUser) {
+      next('login');
+  } else {
+      next();
+  }
+});
+
+export default router;
