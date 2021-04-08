@@ -58,7 +58,7 @@
         <div id="nazivkomponente" class="col-sm rounded-pill">
           <samp>{{String(builder.ramnaziv)}}</samp>
         </div>
-        <router-link to="componentcpu">
+        <router-link to="componentram">
           <div id="card" class="card" style="width: 15rem">
             <img
               class="card-img-top"
@@ -143,39 +143,9 @@
         </router-link>
       </div>
     </div>
-    <div class="row">
-      <div class="row">
-        <div id="nazkomp" class="col-sm rounded-pill">
-          <p id="komp"></p>
-        </div>
-        <div class="col-sm"></div>
-        <div class="col-sm"></div>
-      </div>
-      <div id="specif" class="row">
-        <p id="spec" style="color: white"></p>
-      </div>
-      <div id="shopnow" class="row">
-        <div class="col-sm"></div>
-      </div>
-    </div>
-    <div class="row">
-      <div id="naslov" class="col-sm">
-        <h3>About the build</h3>
-      </div>
-    </div>
-    <div id="aboutbuild" class="row">
-      <div class="col-sm rounded-pill">
-        <h6 id="buildinfo">Build good</h6>
-        <p>pomcpu: {{builder.cpucijena}} socket: {{String(builder.cpusocket)}} cijena: {{ String(builder.stvarnacijenacpu)}} naziv:{{String(builder.cpunaziv)}}
-      
-        </p>
-
-        pomcpu: {{String(builder.stvarnacijenacpu)}} socket:{{String(builder.mbsocket)}} naziv: {{String(builder.mbnaziv)}}  cijena:{{String(builder.mbstvarnacijena)}}
-         <p>
-         pomcpu3: {{ builder.cooolingcijena}} socket: naziv:   cijena:
-         </p>
-      </div>
-    </div>
+<div class="row" id="razmak"></div>
+    
+    
     <div class="row">
       <div id="resetbuild" class="col-sm">
         <router-link to=""
@@ -246,5 +216,8 @@ export default {
 }
 #resetbuild {
   margin-bottom: 50px;
+}
+#razmak{
+  margin-bottom: 10%;
 }
 </style>

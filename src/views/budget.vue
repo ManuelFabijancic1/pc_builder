@@ -7,7 +7,7 @@
       <div class="input-group mb-3">
         <span class="input-group-text">kn</span>
         <input
-          id
+          :placeholder="builder.prijedlog"
           type="number"
           v-model="builder.money"
           class="form-control"
@@ -15,45 +15,24 @@
         />
       </div>
     </div>
-    
-    <div class="cpu">
-      <h6>Select cpu type</h6>
-      <select
+    <h4>Select cpu type:</h4>
+    <div>
+     <select
         class="form-select"
         v-model="builder.socket"
         aria-label="Default select example"
-        aria-placeholder="Please select CPU type?"
-      >
       
+      >
+        
         <option value="AM4">AMD</option>
         <option value="1151">Intel</option>
       </select>
     </div>
-    <div class="ssd">
-      <div class="form-check">
-        <input
-          class="form-check-input"
-          type="checkbox"
-          v-model="builder.ssd"
-          value=""
-          id="ssdcheckbox"
-        />
-        <label class="form-check-label" for="flexCheckDefault">
-          <p>Do you want a SSD?</p>
-        </label>
-      </div>
-    </div>
-    <p>
-      value:{{ builder.money }} ssd:{{ builder.ssd }} computer type:
-      {{ builder.computertype }} CPU:{{ builder.socket }}
-
-    </p>
-     <p>pomcpu: {{builder.pomcpu}} socket: {{builder.cpusocket}}</p>
-    <div class="next">
-      <router-link to="components" v-on:click.native="kalkulator()"
-        >Next</router-link
-      >
-    </div>
+      
+    
+        <router-link to="components" v-on:click.native="kalkulator()" >
+<button id="next" type="button" class="btn btn-primary btn-lg" >Next</button></router-link>
+    
   </div>
 </template>
 
@@ -74,14 +53,49 @@ export default {
       };
        
   },
- 
+   
   
 
 
-  computed: {
+ methods: {
+       
         kalkulator() {
-          console.log('bruh!');
-          console.log(this.builder.computertype);
+                         this.builder.stvarnacijenacpu= []
+                          this.builder.cpusocket=[]
+                          this.builder.cpunaziv=[]
+                          this.builder.cpuinfo=[]
+                          this.builder.cpulink=[]
+                          this.builder.gpustvarnacijena=[]
+                           this.builder.gpunaziv=[]
+                            this.builder.gpusocket=[]
+                            this.builder.gpuinfo=[]
+                            this.builder.gpulink=[]
+                            this.builder.mbstvarnacijena=[]
+                           this.builder.mbnaziv=[]
+                            this.builder.mbsocket=[]
+                            this.builder.mbinfo=[]
+                            this.builder.mblink=[]
+                            this.builder.ramcijena=[]
+                           this.builder.raminfo=[]
+                           this.builder.ramlink=[]
+                           this.builder.ramnaziv=[] 
+                           this.builder.powersinfo=[]
+                           this.builder.powerslink=[]
+                           this.builder.powersnaziv=[]
+                           this.builder.powersstvarnacijena=[]  
+                           this.builder.storageinfo=[]
+                           this.builder.storagelink=[]
+                           this.builder.storagenaziv=[]
+                           this.builder.storagestvarnacijena=[]         
+                           this.builder.caseinfo=[]
+                           this.builder.caselink=[]
+                           this.builder.casenaziv=[]
+                           this.builder.casestvarnacijena=[]   
+                           this.builder.coolinginfo=[]
+                           this.builder.coolinglink=[]
+                           this.builder.coolingnaziv=[]
+                           this.builder.coolingstvarnacijena=[]                          
+
           switch (String(this.builder.computertype)) {
             case '1': 
                   //gaming
@@ -90,14 +104,10 @@ export default {
                   
 
 
-                     db.collection("CPU").where("cijena","<=",String(builder.cpucijena)).orderBy("cijena",  "desc").limit(1)
+                     db.collection("CPU").where("cijena","<=",String(builder.cpucijena)).where("socket","==",String(builder.socket)).orderBy("cijena",  "desc").limit(1)
                         .get()
                         .then((query) => {
-                          this.builder.stvarnacijenacpu= []
-                          this.builder.cpusocket=[]
-                          this.builder.cpunaziv=[]
-                          this.builder.cpuinfo=[]
-                          this.builder.cpulink=[]
+                          
                               query.forEach((doc) => {
                                     const data = doc.data();
                                     
@@ -124,12 +134,8 @@ export default {
                         builder.ostatakgpu=builder.money-builder.stvarnacijenacpu
                         builder.gpucijena=builder.ostatakgpu*0.4
 
-                        db.collection("GPU").where("cijena","<=",String(builder.gpucijena)).get().then((query) => {
-                           this.builder.gpustvarnacijena=[]
-                           this.builder.gpunaziv=[]
-                            this.builder.gpusocket=[]
-                            this.builder.gpuinfo=[]
-                            this.builder.gpulink=[]
+                        db.collection("GPU").where("cijena","<=",String(builder.gpucijena)).orderBy("cijena",  "desc").limit(1).get().then((query) => {
+                          
                             
                               query.forEach((doc) => {
                                     const data = doc.data();
@@ -158,20 +164,16 @@ export default {
 
               
                builder.ostatak1=builder.ostatakgpu-builder.gpustvarnacijena;
-               
+              builder.mbsoc=builder.cpusocket;
                
                 builder.mbcijena=builder.ostatak1*0.3;
 
                 console.log("wtf")
                 
-                  db.collection("MOTHERB").where("cijena", "<=", String(builder.mbcijena)).where("socket","==",String(builder.cpusocket)).orderBy("cijena", "desc").limit(1)
+                  db.collection("MOTHERB").where("cijena", "<=", String(builder.mbcijena)).where("socket","==",builder.socket).orderBy("cijena", "desc").limit(1)
                         .get()
                         .then((query) => {
-                           this.builder.mbstvarnacijena=[]
-                           this.builder.mbnaziv=[]
-                            this.builder.mbsocket=[]
-                            this.builder.mbinfo=[]
-                            this.builder.mblink=[]
+                           
                             
                               query.forEach((doc) => {
                                     const data = doc.data();
@@ -207,10 +209,7 @@ export default {
              db.collection("RAM").where("cijena", "<=", String(builder.rampomvar)).orderBy("cijena", "desc").limit(1)
                         .get()
                         .then((query) => {
-                           this.builder.ramcijena=[]
-                           this.builder.raminfo=[]
-                           this.builder.ramlink=[]
-                           this.builder.ramnaziv=[]             
+                                       
                               query.forEach((doc) => {
                                     const data = doc.data();
 
@@ -239,10 +238,7 @@ export default {
                db.collection("POWERS").where("cijena", "<=", String(builder.powerscijna)).orderBy("cijena", "desc").limit(1)
                         .get()
                         .then((query) => {
-                           this.builder.powersinfo=[]
-                           this.builder.powerslink=[]
-                           this.builder.powersnaziv=[]
-                           this.builder.powersstvarnacijena=[]             
+                                      
                               query.forEach((doc) => {
                                     const data = doc.data();
 
@@ -271,10 +267,7 @@ export default {
                      db.collection("STORAGE").where("cijena", "<=", String(builder.storagecijena)).orderBy("cijena", "desc").limit(1)
                         .get()
                         .then((query) => {
-                           this.builder.storageinfo=[]
-                           this.builder.storagelink=[]
-                           this.builder.storagenaziv=[]
-                           this.builder.storagestvarnacijena=[]             
+                                        
                               query.forEach((doc) => {
                                     const data = doc.data();
 
@@ -301,10 +294,7 @@ export default {
                          db.collection("CASE").where("cijena", "<=", String(builder.casecijena)).orderBy("cijena", "desc").limit(1)
                         .get()
                         .then((query) => {
-                           this.builder.caseinfo=[]
-                           this.builder.caselink=[]
-                           this.builder.casenaziv=[]
-                           this.builder.casestvarnacijena=[]             
+                                       
                               query.forEach((doc) => {
                                     const data = doc.data();
 
@@ -332,10 +322,7 @@ export default {
                          db.collection("SYSTEMC").where("cijena", "<=", String(builder.cooolingcijena)).orderBy("cijena", "desc").limit(1)
                         .get()
                         .then((query) => {
-                           this.builder.coolinginfo=[]
-                           this.builder.coolinglink=[]
-                           this.builder.coolingnaziv=[]
-                           this.builder.coolingstvarnacijena=[]             
+                           
                               query.forEach((doc) => {
                                     const data = doc.data();
 
@@ -370,14 +357,10 @@ export default {
                
 
 
-                     db.collection("CPU").where("cijena","<=",String(builder.cpucijena)).orderBy("cijena",  "desc").limit(1)
+                     db.collection("CPU").where("cijena","<=",String(builder.cpucijena)).where("socket","==",String(builder.socket)).orderBy("cijena",  "desc").limit(1)
                         .get()
                         .then((query) => {
-                          this.builder.stvarnacijenacpu= []
-                          this.builder.cpusocket=[]
-                          this.builder.cpunaziv=[]
-                          this.builder.cpuinfo=[]
-                          this.builder.cpulink=[]
+                          
                               query.forEach((doc) => {
                                     const data = doc.data();
                                     
@@ -408,14 +391,10 @@ export default {
 
                 console.log("wtf")
                 
-                  db.collection("MOTHERB").where("cijena", "<=", String(builder.mbcijena)).where("socket","==",String(builder.cpusocket)).orderBy("cijena", "desc").limit(1)
+                  db.collection("MOTHERB").where("cijena", "<=", String(builder.mbcijena)).where("socket","==",String(builder.socket)).orderBy("cijena", "desc").limit(1)
                         .get()
                         .then((query) => {
-                           this.builder.mbstvarnacijena=[]
-                           this.builder.mbnaziv=[]
-                            this.builder.mbsocket=[]
-                            this.builder.mbinfo=[]
-                            this.builder.mblink=[]
+                           
                             
                               query.forEach((doc) => {
                                     const data = doc.data();
@@ -451,10 +430,7 @@ export default {
              db.collection("RAM").where("cijena", "<=", String(builder.rampomvar)).orderBy("cijena", "desc").limit(1)
                         .get()
                         .then((query) => {
-                           this.builder.ramcijena=[]
-                           this.builder.raminfo=[]
-                           this.builder.ramlink=[]
-                           this.builder.ramnaziv=[]             
+                           
                               query.forEach((doc) => {
                                     const data = doc.data();
 
@@ -483,10 +459,7 @@ export default {
                db.collection("POWERS").where("cijena", "<=", String(builder.powerscijna)).orderBy("cijena", "desc").limit(1)
                         .get()
                         .then((query) => {
-                           this.builder.powersinfo=[]
-                           this.builder.powerslink=[]
-                           this.builder.powersnaziv=[]
-                           this.builder.powersstvarnacijena=[]             
+                           
                               query.forEach((doc) => {
                                     const data = doc.data();
 
@@ -515,10 +488,7 @@ export default {
                      db.collection("STORAGE").where("cijena", "<=", String(builder.storagecijena)).orderBy("cijena", "desc").limit(1)
                         .get()
                         .then((query) => {
-                           this.builder.storageinfo=[]
-                           this.builder.storagelink=[]
-                           this.builder.storagenaziv=[]
-                           this.builder.storagestvarnacijena=[]             
+                           
                               query.forEach((doc) => {
                                     const data = doc.data();
 
@@ -545,10 +515,7 @@ export default {
                          db.collection("CASE").where("cijena", "<=", String(builder.casecijena)).orderBy("cijena", "desc").limit(1)
                         .get()
                         .then((query) => {
-                           this.builder.caseinfo=[]
-                           this.builder.caselink=[]
-                           this.builder.casenaziv=[]
-                           this.builder.casestvarnacijena=[]             
+                           
                               query.forEach((doc) => {
                                     const data = doc.data();
 
@@ -576,10 +543,7 @@ export default {
                          db.collection("SYSTEMC").where("cijena", "<=", String(builder.cooolingcijena)).orderBy("cijena", "desc").limit(1)
                         .get()
                         .then((query) => {
-                           this.builder.coolinginfo=[]
-                           this.builder.coolinglink=[]
-                           this.builder.coolingnaziv=[]
-                           this.builder.coolingstvarnacijena=[]             
+                           
                               query.forEach((doc) => {
                                     const data = doc.data();
 
@@ -611,14 +575,10 @@ export default {
                   
 
 
-                     db.collection("CPU").where("cijena","<=",String(builder.cpucijena)).orderBy("cijena",  "desc").limit(1)
+                     db.collection("CPU").where("cijena","<=",String(builder.cpucijena)).where("socket","==",String(builder.socket)).orderBy("cijena",  "desc").limit(1)
                         .get()
                         .then((query) => {
-                          this.builder.stvarnacijenacpu= []
-                          this.builder.cpusocket=[]
-                          this.builder.cpunaziv=[]
-                          this.builder.cpuinfo=[]
-                          this.builder.cpulink=[]
+                          
                               query.forEach((doc) => {
                                     const data = doc.data();
                                     
@@ -645,12 +605,8 @@ export default {
                         builder.ostatakgpu=builder.money-builder.stvarnacijenacpu
                         builder.gpucijena=builder.ostatakgpu*0.4
 
-                        db.collection("GPU").where("cijena","<=",String(builder.gpucijena)).get().then((query) => {
-                           this.builder.gpustvarnacijena=[]
-                           this.builder.gpunaziv=[]
-                            this.builder.gpusocket=[]
-                            this.builder.gpuinfo=[]
-                            this.builder.gpulink=[]
+                        db.collection("GPU").where("cijena","<=",String(builder.gpucijena)).orderBy("cijena",  "desc").limit(1).get().then((query) => {
+                           
                             
                               query.forEach((doc) => {
                                     const data = doc.data();
@@ -685,14 +641,10 @@ export default {
 
                 console.log("wtf")
                 
-                  db.collection("MOTHERB").where("cijena", "<=", String(builder.mbcijena)).where("socket","==",String(builder.cpusocket)).orderBy("cijena", "desc").limit(1)
+                  db.collection("MOTHERB").where("cijena", "<=", String(builder.mbcijena)).where("socket","==",String(builder.socket)).orderBy("cijena", "desc").limit(1)
                         .get()
                         .then((query) => {
-                           this.builder.mbstvarnacijena=[]
-                           this.builder.mbnaziv=[]
-                            this.builder.mbsocket=[]
-                            this.builder.mbinfo=[]
-                            this.builder.mblink=[]
+                           
                             
                               query.forEach((doc) => {
                                     const data = doc.data();
@@ -728,10 +680,7 @@ export default {
              db.collection("RAM").where("cijena", "<=", String(builder.rampomvar)).orderBy("cijena", "desc").limit(1)
                         .get()
                         .then((query) => {
-                           this.builder.ramcijena=[]
-                           this.builder.raminfo=[]
-                           this.builder.ramlink=[]
-                           this.builder.ramnaziv=[]             
+                           
                               query.forEach((doc) => {
                                     const data = doc.data();
 
@@ -760,10 +709,7 @@ export default {
                db.collection("POWERS").where("cijena", "<=", String(builder.powerscijna)).orderBy("cijena", "desc").limit(1)
                         .get()
                         .then((query) => {
-                           this.builder.powersinfo=[]
-                           this.builder.powerslink=[]
-                           this.builder.powersnaziv=[]
-                           this.builder.powersstvarnacijena=[]             
+                           
                               query.forEach((doc) => {
                                     const data = doc.data();
 
@@ -792,10 +738,7 @@ export default {
                      db.collection("STORAGE").where("cijena", "<=", String(builder.storagecijena)).orderBy("cijena", "desc").limit(1)
                         .get()
                         .then((query) => {
-                           this.builder.storageinfo=[]
-                           this.builder.storagelink=[]
-                           this.builder.storagenaziv=[]
-                           this.builder.storagestvarnacijena=[]             
+                           
                               query.forEach((doc) => {
                                     const data = doc.data();
 
@@ -822,10 +765,7 @@ export default {
                          db.collection("CASE").where("cijena", "<=", String(builder.casecijena)).orderBy("cijena", "desc").limit(1)
                         .get()
                         .then((query) => {
-                           this.builder.caseinfo=[]
-                           this.builder.caselink=[]
-                           this.builder.casenaziv=[]
-                           this.builder.casestvarnacijena=[]             
+                                       
                               query.forEach((doc) => {
                                     const data = doc.data();
 
@@ -853,10 +793,7 @@ export default {
                          db.collection("SYSTEMC").where("cijena", "<=", String(builder.cooolingcijena)).orderBy("cijena", "desc").limit(1)
                         .get()
                         .then((query) => {
-                           this.builder.coolinginfo=[]
-                           this.builder.coolinglink=[]
-                           this.builder.coolingnaziv=[]
-                           this.builder.coolingstvarnacijena=[]             
+                                    
                               query.forEach((doc) => {
                                     const data = doc.data();
 
@@ -886,14 +823,10 @@ export default {
                   
 
 
-                     db.collection("CPU").where("cijena","<=",String(builder.cpucijena)).orderBy("cijena",  "desc").limit(1)
+                     db.collection("CPU").where("cijena","<=",String(builder.cpucijena)).where("socket","==",String(builder.socket)).orderBy("cijena",  "desc").limit(1)
                         .get()
                         .then((query) => {
-                          this.builder.stvarnacijenacpu= []
-                          this.builder.cpusocket=[]
-                          this.builder.cpunaziv=[]
-                          this.builder.cpuinfo=[]
-                          this.builder.cpulink=[]
+                         
                               query.forEach((doc) => {
                                     const data = doc.data();
                                     
@@ -920,12 +853,8 @@ export default {
                         builder.ostatakgpu=builder.money-builder.stvarnacijenacpu
                         builder.gpucijena=builder.ostatakgpu*0.4
 
-                        db.collection("GPU").where("cijena","<=",String(builder.gpucijena)).get().then((query) => {
-                           this.builder.gpustvarnacijena=[]
-                           this.builder.gpunaziv=[]
-                            this.builder.gpusocket=[]
-                            this.builder.gpuinfo=[]
-                            this.builder.gpulink=[]
+                        db.collection("GPU").where("cijena","<=",String(builder.gpucijena)).orderBy("cijena",  "desc").limit(1).get().then((query) => {
+                           
                             
                               query.forEach((doc) => {
                                     const data = doc.data();
@@ -960,14 +889,10 @@ export default {
 
                 console.log("wtf")
                 
-                  db.collection("MOTHERB").where("cijena", "<=", String(builder.mbcijena)).where("socket","==",String(builder.cpusocket)).orderBy("cijena", "desc").limit(1)
+                  db.collection("MOTHERB").where("cijena", "<=", String(builder.mbcijena)).where("socket","==",String(builder.socket)).orderBy("cijena", "desc").limit(1)
                         .get()
                         .then((query) => {
-                           this.builder.mbstvarnacijena=[]
-                           this.builder.mbnaziv=[]
-                            this.builder.mbsocket=[]
-                            this.builder.mbinfo=[]
-                            this.builder.mblink=[]
+                           
                             
                               query.forEach((doc) => {
                                     const data = doc.data();
@@ -1003,10 +928,7 @@ export default {
              db.collection("RAM").where("cijena", "<=", String(builder.rampomvar)).orderBy("cijena", "desc").limit(1)
                         .get()
                         .then((query) => {
-                           this.builder.ramcijena=[]
-                           this.builder.raminfo=[]
-                           this.builder.ramlink=[]
-                           this.builder.ramnaziv=[]             
+                           
                               query.forEach((doc) => {
                                     const data = doc.data();
 
@@ -1035,10 +957,7 @@ export default {
                db.collection("POWERS").where("cijena", "<=", String(builder.powerscijna)).orderBy("cijena", "desc").limit(1)
                         .get()
                         .then((query) => {
-                           this.builder.powersinfo=[]
-                           this.builder.powerslink=[]
-                           this.builder.powersnaziv=[]
-                           this.builder.powersstvarnacijena=[]             
+                                        
                               query.forEach((doc) => {
                                     const data = doc.data();
 
@@ -1067,10 +986,7 @@ export default {
                      db.collection("STORAGE").where("cijena", "<=", String(builder.storagecijena)).orderBy("cijena", "desc").limit(1)
                         .get()
                         .then((query) => {
-                           this.builder.storageinfo=[]
-                           this.builder.storagelink=[]
-                           this.builder.storagenaziv=[]
-                           this.builder.storagestvarnacijena=[]             
+                                        
                               query.forEach((doc) => {
                                     const data = doc.data();
 
@@ -1097,10 +1013,7 @@ export default {
                          db.collection("CASE").where("cijena", "<=", String(builder.casecijena)).orderBy("cijena", "desc").limit(1)
                         .get()
                         .then((query) => {
-                           this.builder.caseinfo=[]
-                           this.builder.caselink=[]
-                           this.builder.casenaziv=[]
-                           this.builder.casestvarnacijena=[]             
+                           
                               query.forEach((doc) => {
                                     const data = doc.data();
 
@@ -1128,10 +1041,7 @@ export default {
                          db.collection("SYSTEMC").where("cijena", "<=", String(builder.cooolingcijena)).orderBy("cijena", "desc").limit(1)
                         .get()
                         .then((query) => {
-                           this.builder.coolinginfo=[]
-                           this.builder.coolinglink=[]
-                           this.builder.coolingnaziv=[]
-                           this.builder.coolingstvarnacijena=[]             
+                           
                               query.forEach((doc) => {
                                     const data = doc.data();
 
@@ -1154,251 +1064,9 @@ export default {
                               });
                         });
          
-            break;
-            case '5': 
-                  //fastest
-           
-                  
-
-
-                     db.collection("CPU").orderBy("cijena",  "desc").limit(1)
-                        .get()
-                        .then((query) => {
-                          this.builder.stvarnacijenacpu= []
-                          this.builder.cpusocket=[]
-                          this.builder.cpunaziv=[]
-                          this.builder.cpuinfo=[]
-                          this.builder.cpulink=[]
-                              query.forEach((doc) => {
-                                    const data = doc.data();
-                                    
-                                  
-                                   
-
-                                    this.builder.cpusocket.push(
-                                          data.socket,
-                                    );
-                                    this.builder.cpunaziv.push(
-                                         data.ime,
-                                   ); 
-                                   this.builder.cpuinfo.push(
-                                        data.desc
-                                   );
-                                   this.builder.cpulink.push(
-                                        data.link
-                                   );
-                              });
-                        });
-
-                    
-
-                        db.collection("GPU").orderBy("cijena",  "desc").limit(1).get().then((query) => {
-                           this.builder.gpustvarnacijena=[]
-                           this.builder.gpunaziv=[]
-                            this.builder.gpusocket=[]
-                            this.builder.gpuinfo=[]
-                            this.builder.gpulink=[]
-                            
-                              query.forEach((doc) => {
-                                    const data = doc.data();
-                                    
-
-                                    
-                                    this.builder.gpunaziv.push(
-                                          data.ime,
-                                        
-                                    );
-                                    
-                                    this.builder.gpuinfo.push(
-                                      data.desc
-                                    );
-                                    this.builder.gpulink.push(
-                                      data.link
-                                    );
-                                    
-                          
-                                
-                              });
-                        });
-
-              
-               
-
-               
-                
-                  db.collection("MOTHERB").where("socket","==",String(builder.cpusocket)).orderBy("cijena", "desc").limit(1)
-                        .get()
-                        .then((query) => {
-                           this.builder.mbstvarnacijena=[]
-                           this.builder.mbnaziv=[]
-                            this.builder.mbsocket=[]
-                            this.builder.mbinfo=[]
-                            this.builder.mblink=[]
-                            
-                              query.forEach((doc) => {
-                                    const data = doc.data();
-                                    
-
-                                    
-                                    this.builder.mbnaziv.push(
-                                          data.ime,
-                                        
-                                    );
-                                    this.builder.mbsocket.push(
-                                      data.socket
-                                    );
-                                    this.builder.mbinfo.push(
-                                      data.desc
-                                    );
-                                    this.builder.mblink.push(
-                                      data.link
-                                    );
-                                    
-                          
-                                
-                              });
-                        });
-                        
-                  
-             db.collection("RAM").orderBy("cijena", "desc").limit(1)
-                        .get()
-                        .then((query) => {
-                           this.builder.ramcijena=[]
-                           this.builder.raminfo=[]
-                           this.builder.ramlink=[]
-                           this.builder.ramnaziv=[]             
-                              query.forEach((doc) => {
-                                    const data = doc.data();
-
-                                    
-                                    this.builder.ramnaziv.push(
-                                          data.ime,
-                                        
-                                    );
-                                    this.builder.ramlink.push(
-                                      data.link,
-                                    );
-                                   this.builder.raminfo.push(
-                                     data.desc,
-                                   );
-                          
-                                
-                              });
-                        });
-                
-                
-
-               db.collection("POWERS").orderBy("cijena", "desc").limit(1)
-                        .get()
-                        .then((query) => {
-                           this.builder.powersinfo=[]
-                           this.builder.powerslink=[]
-                           this.builder.powersnaziv=[]
-                           this.builder.powersstvarnacijena=[]             
-                              query.forEach((doc) => {
-                                    const data = doc.data();
-
-                                   
-                                    this.builder.powersnaziv.push(
-                                          data.ime,
-                                        
-                                    );
-                                    this.builder.powerslink.push(
-                                      data.link,
-                                    );
-                                   this.builder.powersinfo.push(
-                                     data.desc,
-                                   );
-                          
-                                
-                              });
-                        });
-
-                       
-
-                     db.collection("STORAGE").orderBy("cijena", "desc").limit(1)
-                        .get()
-                        .then((query) => {
-                           this.builder.storageinfo=[]
-                           this.builder.storagelink=[]
-                           this.builder.storagenaziv=[]
-                           this.builder.storagestvarnacijena=[]             
-                              query.forEach((doc) => {
-                                    const data = doc.data();
-
-                                    
-                                    this.builder.storagenaziv.push(
-                                          data.ime,
-                                        
-                                    );
-                                    this.builder.storagelink.push(
-                                      data.link,
-                                    );
-                                   this.builder.storageinfo.push(
-                                     data.desc,
-                                   );
-                          
-                                
-                              });
-                        });
-                       
-                         db.collection("CASE").orderBy("cijena", "desc").limit(1)
-                        .get()
-                        .then((query) => {
-                           this.builder.caseinfo=[]
-                           this.builder.caselink=[]
-                           this.builder.casenaziv=[]
-                           this.builder.casestvarnacijena=[]             
-                              query.forEach((doc) => {
-                                    const data = doc.data();
-
-                                    this.builder.casestvarnacijena.push(
-                                          data.cijena,
-                                        
-                                    );
-                                    this.builder.casenaziv.push(
-                                          data.ime,
-                                        
-                                    );
-                                    this.builder.caselink.push(
-                                      data.link,
-                                    );
-                                   this.builder.caseinfo.push(
-                                     data.desc,
-                                   );
-                          
-                                
-                              });
-                        });
-                        
-
-                         db.collection("SYSTEMC").orderBy("cijena", "desc").limit(1)
-                        .get()
-                        .then((query) => {
-                           this.builder.coolinginfo=[]
-                           this.builder.coolinglink=[]
-                           this.builder.coolingnaziv=[]
-                           this.builder.coolingstvarnacijena=[]             
-                              query.forEach((doc) => {
-                                    const data = doc.data();
-
-                                    
-                                    this.builder.coolingnaziv.push(
-                                          data.ime,
-                                        
-                                    );
-                                    this.builder.coolinglink.push(
-                                      data.link,
-                                    );
-                                   this.builder.coolinginfo.push(
-                                     data.desc,
-                                   );
-                          
-                                
-                              });
-                        });
+          
          
-            break;
+            
           }
   
         },
@@ -1424,13 +1092,15 @@ export default {
 .ssd {
   font-size: 20px;
 }
-.next {
+#next {
   font-size: 30px;
   margin-top: 30px;
   background: #0978b8;
   width: fit-content;
   height: auto;
   padding: 10px;
-  margin-bottom: 570px;
+  margin-bottom: 270px;
 }
+  
+
 </style>

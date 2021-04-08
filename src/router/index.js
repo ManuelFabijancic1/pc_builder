@@ -88,6 +88,12 @@ const routes = [
     name: 'componentsystemcooling',
     
     component: () => import(/* webpackChunkName: "componentspecs" */'../views/componentsystemcooling.vue')
+  },
+  {
+    path: '/fastestpc',
+    name: 'fastestpc',
+    
+    component: () => import(/* webpackChunkName: "componentspecs" */'../views/fastestpc.vue')
   }
 ]
 

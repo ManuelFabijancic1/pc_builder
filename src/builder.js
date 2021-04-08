@@ -2,6 +2,8 @@
 
 export default {
       name:"builder",
+      socket:"",
+      prijedlog:[],
 
       ssd: '',
       money: "",
@@ -17,6 +19,7 @@ export default {
       mbinfo:"",
       ostatak1:"",
       mbsocket:"",
+      mbsoc:"",
 
       
 

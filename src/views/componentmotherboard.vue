@@ -38,11 +38,10 @@ export default {
 </script>
 <style>
 
-#specif{
-  background-color: rgb(51, 51, 51);
-  border-radius: 25px;
-  height: 300px;
- 
+#info_o_mb{
+color: rgb(194, 194, 194);
+  margin-top: 1%;
+  margin-left:1% ;
 }
 #shopnow{
   margin-top: 50px;

@@ -48,7 +48,7 @@
     <div class="col-sm">
     </div>
     <div class="col-sm">
-        <router-link to="budget" v-on:click.native="builder.computertype=5;">
+        <router-link to="fastestpc" v-on:click.native="builder.computertype=5;">
        <div id='card1' class="card" style="width: 20rem;">
   <img class="card-img-top" src="@/assets/thebest.jpg" alt="Card image cap">
   <div class="card-body">
@@ -70,7 +70,27 @@ export default {
   data() {
     return{ 
       builder,};
-  }};
+  },
+ 
+      destroyed:function(){
+
+
+     builder.prijedlog=[]
+      switch(this.builder.computertype){
+      case '1': 
+      builder.prijedlog=8000
+  
+      case '2': 
+      builder.prijedlog=5000
+      case '3': 
+      builder.prijedlog=11000
+      case '4': 
+      builder.prijedlog=16000
+      }
+      }
+
+  
+  };
 </script>
 
 <style>

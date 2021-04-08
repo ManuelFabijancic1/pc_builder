@@ -9,13 +9,13 @@
        <div class="col-sm"></div>   
        </div>
   <div id="specif" class="row">
-    <p>
+    <p id="info_o_ps">
       {{String(builder.powersstvarnacijena)}}
     </p>
   </div>
   <div id="shopnow" class="row">
     <div class="col-sm"></div>
-      <a :href=builder.powerslink>
+      <a :href=builder.powerslink target="_blank">
     <div class="col-sm"><button id="butshop" type="button" class="btn btn-primary btn-lg">SHOP NOW!</button></div>
       </a>
      <div class="col-sm"></div>
@@ -37,11 +37,10 @@ export default {
 }
 </script>
 <style>
-#specif{
-  background-color: rgb(51, 51, 51);
-  border-radius: 25px;
-  height: 300px;
- 
+#info_o_ps{
+ color: rgb(194, 194, 194);
+  margin-top: 1%;
+  margin-left:1% ;
 }
 #shopnow{
   margin-top: 50px;

@@ -79,7 +79,7 @@ export default {
     signup() {
       firebase
         .auth()
-        .createUserWithEmailAndPassword(this.username, this.password)
+        .createUserWithEmailAndPassword(this.email, this.password)
         .then(function () {
           console.log("Uspješna registracija");
         })
