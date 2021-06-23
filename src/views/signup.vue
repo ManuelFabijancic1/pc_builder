@@ -5,15 +5,7 @@
       <div class="col">
         <form>
           <div class="form-group">
-            <label for="exampleInputUsername">UserName</label>
-            <input
-              type="Name"
-              v-model="username"
-              class="form-control"
-              id="exampleInputname1"
-              aria-describedby="NameHelp"
-              placeholder="Enter Username"
-            />
+           
             <label for="exampleInputEmail1">Email address</label>
             <input
               type="email"
@@ -69,7 +61,7 @@ export default {
   name: 'signup',
   data() {
     return {
-      username: "",
+     
       email: "",
       password: "",
       passwordRepeat: "",

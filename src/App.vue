@@ -28,8 +28,8 @@
           <div v-if="store.currentUser" class="links">
             <div class="row">
               
-            <p id='tekst1'>Logged in as:</p><a href="#" @click="logout()" class="nav-link">a{{username}} </a>
-            
+            <a href="#" class="nav-link"><p id='tekst1'>Logged in as:</p><router-link to="/loginhome">{{this.store.currentUser}} </router-link></a>
+           
             </div>
           </div>
         </div>
@@ -87,7 +87,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   background-color: #353535;
-  height: 70px;
+  height: 90px;
 }
 
 #nav-item {

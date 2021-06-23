@@ -94,6 +94,12 @@ const routes = [
     name: 'fastestpc',
     
     component: () => import(/* webpackChunkName: "componentspecs" */'../views/fastestpc.vue')
+  },
+  {
+    path: '/loginhome',
+    name: 'loginhome',
+    
+    component: () => import(/* webpackChunkName: "componentspecs" */'../views/loginhome.vue')
   }
 ]
 
