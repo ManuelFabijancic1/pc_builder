@@ -1,6 +1,7 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+import Home from '../views/Home.vue';
+import store from '@/store';
 
 Vue.use(VueRouter)
 
@@ -8,7 +9,10 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Home
+    component: Home,
+    meta: {
+      needsUser: false,
+    },
   },
   {
     path: '/login',
@@ -90,17 +94,18 @@ const routes = [
     component: () => import(/* webpackChunkName: "componentspecs" */'../views/componentsystemcooling.vue')
   },
   {
+    path: '/loginhome',
+    name: 'loginhome',
+    
+    component: () => import(/* webpackChunkName: "loginhome" */'../views/loginhome.vue')
+  },
+  {
     path: '/fastestpc',
     name: 'fastestpc',
     
     component: () => import(/* webpackChunkName: "componentspecs" */'../views/fastestpc.vue')
-  },
-  {
-    path: '/loginhome',
-    name: 'loginhome',
-    
-    component: () => import(/* webpackChunkName: "componentspecs" */'../views/loginhome.vue')
   }
+
 ]
 
 const router = new VueRouter({
@@ -108,5 +113,17 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes
 })
+/*
+router.beforeEach((to, from, next) => {
+ 
 
-export default router
+  const noUser = store.currentUser === null;
+
+  if (noUser && to.meta.needsUser) {
+      next('/');
+  } else {
+      next();
+  }
+});
+*/
+export default router;
