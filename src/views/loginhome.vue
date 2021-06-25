@@ -1,46 +1,131 @@
-  
-<template>
-   <div class="razmak"> <p> loginhome </p>
-    <a href="#"  @click="logout()" class="nav-link">Logout</a>
-   </div>
-   
+<template onLoad="javascript:print()">
+  <div class="container">
+    <div class="row">
+      <div class="col-2"><!--useless2--></div>
+      <div class="col-8">
+        <center>
+          <div class="spacing">
+            <div class="square">
+              <p>Username: {{  }}</p>
+            </div>
+          
+            <div class="square">
+              <p> Saved build: </p>
+
+              <div class="build"><button v-on:click="print()" class="btn btn-primary btn-lg">LOAD BUILD</button></div>
+
+              <div class="displaycomponents">
+                <p> CPU: {{String(builder.cpuuser)}} </p>
+                <p> GPU: {{String(builder.gpuuser)}} </p>
+                <p> CASE: {{String(builder.caseuser)}} </p>
+                <p> MOTHERBOARD: {{String(builder.mbuser)}} </p>
+                <p> POWER SUPPLY: {{String(builder.poweruser)}} </p>
+                <p> RAM: {{String(builder.ramuser)}} </p>
+                <p> COOLING: {{String(builder.coolinguser)}} </p>
+                <p> STORAGE: {{String(builder.storageuser)}} </p>
+
+              </div>
+            </div>
+          </div> 
+        </center>
+      </div>
+      <div class="col-2">
+        <!--dont matter2-->
+      </div>
+    </div>
+  </div>
 </template>
 
 
 <script>
+import builder from '@/builder';
 import store from "@/store";
 import { firebase } from "@/firebase";
-firebase.auth().onAuthStateChanged((user) => {
-  if (user) {
-    console.log("***", user.email);
-    store.currentUser = user.email;
-  } else {
-    console.log("**** No user");
-    store.currentUser = null;
-  }
-});
+import { db } from "@/firebase";
+
+
+
 export default {
   name: 'loginhome',
-  data() {
-    return {
-      store,
-    };
+
+  data(){
+   return {
+    builder,
+    
+   };
   },
+
   methods: {
-    logout() {
-      firebase
-        .auth()
-        .signOut()
-        .then(() => {
-          this.$router.push({ name: "login" });
-        });
+    print(){
+        console.log("start");
+
+        this.builder.cpuuser=[],
+        this.builder.caseuser=[],
+        this.builder.gpuuser=[],
+        this.builder.mbuser=[],
+        this.builder.poweruser=[],
+        this.builder.ramuser=[],
+        this.builder.storageuser=[],
+        this.builder.coolinguser=[],
+
+        db.collection("users").where("id", "==", String(store.currentUser))
+                        .get()
+                        .then((query) => {           
+                              query.forEach((doc) => {
+                                    const data = doc.data();
+                                        this.builder.cpuuser.push(
+                                            data.cpu,
+                                        );
+                                        this.builder.gpuuser.push(
+                                            data.gpu,
+                                        );
+                                        this.builder.mbuser.push(
+                                            data.motherboard,
+                                        );
+                                        this.builder.ramuser.push(
+                                            data.ram,
+                                        );
+                                        this.builder.poweruser.push(
+                                            data.powersupply,
+                                        );
+                                        this.builder.coolinguser.push(
+                                            data.systemcooling,
+                                        );
+                                        this.builder.caseuser.push(
+                                            data.case,
+                                        );
+                                        this.builder.storageuser.push(
+                                            data.storage,
+                                        );
+                                        
+                                  
+                              });
+                        });
+        },
     },
-  },}
+};
+  
 </script>
 
 
 <style scoped lang="scss">
-#razmak{
-  margin-bottom: 500px;
+.spacing {
+  padding: 8px 16px;
+  margin-top: 10px;
+  margin-bottom: 560px;
 }
+.square {
+  border-radius: 15px;
+  background: #4d4d4d;
+  padding: 20px;
+  width: 80%;
+  height: auto;
+  text-align: center;
+  color: black;
+  font-weight: bold;
+  font-size: 40px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
 </style>

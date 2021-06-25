@@ -308,7 +308,7 @@ export default{
   width: fit-content;
   height: auto;
   padding: 10px;
-  margin-bottom: 300px;
+  margin-bottom: 600px;
   margin-top: 10%;
   
   
