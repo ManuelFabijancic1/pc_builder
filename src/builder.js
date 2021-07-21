@@ -5,6 +5,15 @@ export default {
       socket:"",
       prijedlog:[],
 
+      usercpu: '',
+      usergpu: '',
+      usermotherboard:'',
+      userpowersupply: '',
+      userram: '',
+      userstorage: '',
+      usersystemcooling: '',
+      usercase: '',
+
       ssd: '',
       money: "",
       computertype: '',
@@ -75,6 +84,16 @@ export default {
       coolinginfo:"",
       coolinglink:"",
       
+      username:"",
+
+      cpuuser:"",
+      gpuuser:"",
+      caseuser:"",
+      coolinguser:"",
+      ramuser:"",
+      storageuser:"",
+      mbuser:"",
+      poweruser:"",
     
 
 

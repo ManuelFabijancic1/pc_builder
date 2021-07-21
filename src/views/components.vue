@@ -148,11 +148,11 @@
     
     <div class="row">
       <div id="resetbuild" class="col-sm">
-        <router-link to=""
-          ><button type="button" class="btn btn-primary btn-lg">
+        <router-link to="" v-on:click.native="savebuild()">
+          <button type="button" class="btn btn-primary btn-lg">
             Save Build
-          </button></router-link
-        >
+          </button></router-link>
+        
       </div>
       <div class="col-sm"></div>
       <div class="col-sm"></div>
@@ -176,15 +176,34 @@ import { db } from "@/firebase";
 import builder from "@/builder";
 
 
+
 export default {
   data() {
     return{ 
-      builder
+      builder,
+      
      
       };
   },
-  
-}
+methods: {
+    savebuild() {
+      
+      db.collection("users").doc(String(store.currentUser)).set({
+        id: String(store.currentUser),
+        case: String(this.builder.casenaziv),
+        cpu: String(this.builder.cpunaziv),
+        gpu: String(this.builder.gpunaziv),
+        motherboard: String(this.builder.mbnaziv),
+        powersupply: String(this.builder.powersnaziv),
+        ram: String(this.builder.ramnaziv),
+        storage: String(this.builder.storagenaziv),
+        systemcooling: String(this.builder.coolingnaziv)
+        
+      });
+      console.log("it's happening!");
+    },
+  }
+};
 </script>
 
 
