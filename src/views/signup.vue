@@ -5,7 +5,6 @@
       <div class="col">
         <form>
           <div class="form-group">
-           
             <label for="exampleInputEmail1">Email address</label>
             <input
               type="email"
@@ -36,7 +35,7 @@
               placeholder="Password"
             />
           </div>
-          <button id="subbut" type="button" @click="signup" class="btn btn-primary">
+          <button id="subbut" type="button" @click="signup()" class="btn btn-primary">
             Submit
           </button>
         </form>
@@ -55,13 +54,10 @@
 
 <script>
 import { firebase } from "@/firebase.js";
-
-
 export default {
   name: 'signup',
   data() {
     return {
-     
       email: "",
       password: "",
       passwordRepeat: "",
@@ -74,6 +70,7 @@ export default {
         .createUserWithEmailAndPassword(this.email, this.password)
         .then(function () {
           console.log("Uspješna registracija");
+          this.$router.replace({ name: 'login' });
         })
         .catch(function (error) {
           console.error("Greška", error);

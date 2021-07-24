@@ -25,6 +25,7 @@
                 placeholder="Password"
               />
             </div>
+            
             <button type="button" @click="login()" class="btn btn-primary">
               Log in
             </button>
@@ -56,8 +57,10 @@ export default {
   name: "login",
   data() {
     return {
-      email: "",
-      password: "",
+      email:"",
+      password:"",
+      
+      
     };
   },
   methods: {
@@ -69,12 +72,13 @@ export default {
         .signInWithEmailAndPassword(this.email, this.password)
         .then((result) => {
           console.log("Uspješna prijava!", result);
-
-          this.$router.replace({ name: "Home" });
+          
+          this.$router.replace({ name: '/Home' });
         })
         .catch(function (e) {
           console.error("Greška", e);
         });
+        
     },
   },
 };
@@ -83,5 +87,4 @@ export default {
 #signupbut{
 margin-bottom: 850px;
 }
-
 </style>
