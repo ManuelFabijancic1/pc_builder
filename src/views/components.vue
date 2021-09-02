@@ -200,7 +200,7 @@ methods: {
         systemcooling: String(this.builder.coolingnaziv)
         
       });
-      console.log("it's happening!");
+      
     },
   }
 };
