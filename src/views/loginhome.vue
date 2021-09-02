@@ -58,7 +58,7 @@ export default {
 
   methods: {
     print(){
-        console.log("start");
+        
 
         this.builder.cpuuser=[],
         this.builder.caseuser=[],
