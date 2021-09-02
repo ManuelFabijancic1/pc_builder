@@ -168,7 +168,7 @@ export default {
                
                 builder.mbcijena=builder.ostatak1*0.3;
 
-                console.log("wtf")
+               
                 
                   db.collection("MOTHERB").where("cijena", "<=", String(builder.mbcijena)).where("socket","==",builder.socket).orderBy("cijena", "desc").limit(1)
                         .get()
@@ -350,7 +350,7 @@ export default {
             case '2': 
                   //basic
                  
-                  console.log("god");
+                  
                   
 
                   builder.cpucijena = builder.money * 0.35;
@@ -389,7 +389,7 @@ export default {
                
                 builder.mbcijena=builder.ostatak1*0.3;
 
-                console.log("wtf")
+             
                 
                   db.collection("MOTHERB").where("cijena", "<=", String(builder.mbcijena)).where("socket","==",String(builder.socket)).orderBy("cijena", "desc").limit(1)
                         .get()
@@ -639,7 +639,7 @@ export default {
                
                 builder.mbcijena=builder.ostatak1*0.3;
 
-                console.log("wtf")
+              
                 
                   db.collection("MOTHERB").where("cijena", "<=", String(builder.mbcijena)).where("socket","==",String(builder.socket)).orderBy("cijena", "desc").limit(1)
                         .get()
@@ -887,7 +887,7 @@ export default {
                
                 builder.mbcijena=builder.ostatak1*0.3;
 
-                console.log("wtf")
+                
                 
                   db.collection("MOTHERB").where("cijena", "<=", String(builder.mbcijena)).where("socket","==",String(builder.socket)).orderBy("cijena", "desc").limit(1)
                         .get()
